@@ -1,0 +1,4 @@
+function useCalc() {
+}
+
+export {useCalc};
