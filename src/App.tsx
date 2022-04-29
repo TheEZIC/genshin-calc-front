@@ -1,9 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { IconContext } from "react-icons";
 import {ChakraProvider, extendTheme} from '@chakra-ui/react';
 import Header from './Components/Header/Header';
 import Calculator from "./Pages/Calculator/Calculator";
-import Roster from "./Pages/Roster/Roster";
+import Character from "./Pages/Character/Character";
 import "./App.scss";
 
 const config = {
@@ -16,17 +17,19 @@ const theme = extendTheme({ config });
 const App = () => {
   return (
     <BrowserRouter>
-      <ChakraProvider theme={theme}>
-        <div className="App">
-          <Header/>
-          <div className="main">
-            <Routes>
-              <Route index element={<Calculator/>}/>
-              <Route path="/roster" element={<Roster/>}/>
-            </Routes>
+      <IconContext.Provider value={{ color: "white"}}>
+        <ChakraProvider theme={theme}>
+          <div className="App">
+            <Header/>
+            <div className="main">
+              <Routes>
+                <Route index element={<Calculator/>}/>
+                <Route path="/characters" element={<Character/>}/>
+              </Routes>
+            </div>
           </div>
-        </div>
-      </ChakraProvider>
+        </ChakraProvider>
+      </IconContext.Provider>
     </BrowserRouter>
   );
 }

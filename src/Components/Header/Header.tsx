@@ -11,8 +11,8 @@ const Header = () => {
         <Link to="/">
           <Button className={styles.navItem}>Калькулятор</Button>
         </Link>
-        <Link to="/roster">
-          <Button className={styles.navItem}>Отряд</Button>
+        <Link to="/characters">
+          <Button className={styles.navItem}>Персонажи</Button>
         </Link>
       </Flex>
     </Box>
