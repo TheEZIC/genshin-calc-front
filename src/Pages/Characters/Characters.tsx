@@ -6,13 +6,8 @@ import CharactersList from "./CharactersList";
 const Characters = () => {
   return (
     <Container maxW="1440px">
-      <div className={styles.calculatorCharacterName}>
-        Персонажи
-      </div>
-      <div className={styles.characters}>
-        <EmptyCard title="Добавить нового персонажа"/>
-        <CharacterFullCard/>
-      </div>
+      <h2 className={styles.pageTitle}>Персонажи</h2>
+      <CharactersList/>
     </Container>
   );
 };

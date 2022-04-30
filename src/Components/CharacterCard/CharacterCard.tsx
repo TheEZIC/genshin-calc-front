@@ -1,10 +1,10 @@
-import React from 'react';
-import {Box} from "@chakra-ui/react";
+import React, {FC} from 'react';
+import {Box, Image} from "@chakra-ui/react";
 
 import styles from "./CharacterCard.module.scss";
 import PyroIcon from "../Icons/ElementIcons/PyroIcon";
 
-const CharacterCard = () => {
+const CharacterCard: FC = ({children}) => {
   return (
     <Box bg="gray.600" className={styles.card}>
       <div className={styles.characterContainer} style={{backgroundImage:"linear-gradient(to bottom right,rgba(89,84,130,0.3),rgba(184,134,202,0.3)), url('https://frzyc.github.io/genshin-optimizer/static/media/Banner.02accd6cf9a4395a0acd.png')"}}>

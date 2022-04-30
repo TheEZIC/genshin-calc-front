@@ -1,17 +1,17 @@
 import React, {FC} from 'react';
-import {Box} from "@chakra-ui/react";
+import {Box, BoxProps} from "@chakra-ui/react";
 import styles from "./EmptyCard.module.scss";
 import {FaPlus} from "react-icons/all";
 
-interface IProps {
+interface IProps extends BoxProps {
   title: string;
 }
 
-const EmptyCard: FC<IProps> = ({title}) => {
+const EmptyCard: FC<IProps> = (props) => {
   return (
-    <Box bg="gray.600" className={styles.card}>
+    <Box {...props} bg="gray.600" className={styles.card}>
       <div className={styles.cardHeader}>
-        {title}
+        {props.title}
       </div>
       <Box bg="gray.700" className={styles.plusBox}>
         <FaPlus className={styles.icon}/>

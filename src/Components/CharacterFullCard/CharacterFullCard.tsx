@@ -11,17 +11,23 @@ import EnergyRechargeIcon from "../Icons/StatIcons/EnergyRechargeIcon";
 import CritRateIcon from "../Icons/StatIcons/CritRateIcon";
 import CritDMGIcon from "../Icons/StatIcons/CritDMGIcon";
 import CharacterStat from "./CharacterStat";
+import {IMyCharacter} from "../../CharacterTypes/IMyCharacter";
 
-const CharacterFullCard: FC = ({children}) => {
+interface IProps extends IMyCharacter {
+}
+
+const CharacterFullCard: FC<IProps> = (props) => {
   return (
     <Box bg="gray.600" className={styles.card}>
-      <div className={styles.characterContainer} style={{backgroundImage:"linear-gradient(to bottom right,rgba(89,84,130,0.3),rgba(184,134,202,0.3)), url('https://frzyc.github.io/genshin-optimizer/static/media/Banner.02accd6cf9a4395a0acd.png')"}}>
-        <Image className={styles.characterImage} objectFit='cover' src={'https://frzyc.github.io/genshin-optimizer/static/media/Icon.0cbbc73454f82af5dab5.png'}/>
+      <div
+        className={styles.characterContainer}
+        style={{backgroundImage:`linear-gradient(to bottom right,rgba(89,84,130,0.3),rgba(184,134,202,0.3)), url('${process.env.PUBLIC_URL}/Assets/CharacterBanners/${props.imageName}')`}}
+      >
+        <Image className={styles.characterImage} objectFit='cover' src={`${process.env.PUBLIC_URL}/Assets/CharacterImages/${props.imageName}`}/>
         <div className={styles.characterInfo}>
           <div className={styles.characterNameElement}>
             <Box as='span' className={styles.characterName}>
-              Сян Лин
-              {/*{character.name}*/}
+              {props.displayName}
             </Box>
             <div className={styles.elementIconContainer} style={{backgroundColor:"rgba(191, 40, 24,0.9)"}}>
               <PyroIcon/>
