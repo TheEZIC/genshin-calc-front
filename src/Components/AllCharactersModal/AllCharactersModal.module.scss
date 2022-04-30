@@ -1,0 +1,25 @@
+.modal {
+  width: 500px;
+
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 45px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.itemImage {
+  width: 35px;
+  margin-right: 10px;
+}
+
+.itemTitle {
+  font-size: 18px;
+  font-weight: bold;
+}

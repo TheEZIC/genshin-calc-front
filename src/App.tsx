@@ -4,8 +4,9 @@ import { IconContext } from "react-icons";
 import {ChakraProvider, extendTheme} from '@chakra-ui/react';
 import Header from './Components/Header/Header';
 import Calculator from "./Pages/Calculator/Calculator";
-import Character from "./Pages/Character/Character";
+import Characters from "./Pages/Characters/Characters";
 import "./App.scss";
+import {RecoilRoot} from "recoil";
 
 const config = {
   initialColorMode: 'dark',
@@ -16,21 +17,23 @@ const theme = extendTheme({ config });
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <IconContext.Provider value={{ color: "white"}}>
-        <ChakraProvider theme={theme}>
-          <div className="App">
-            <Header/>
-            <div className="main">
-              <Routes>
-                <Route index element={<Calculator/>}/>
-                <Route path="/characters" element={<Character/>}/>
-              </Routes>
+    <RecoilRoot>
+      <BrowserRouter>
+        <IconContext.Provider value={{ color: "white"}}>
+          <ChakraProvider theme={theme}>
+            <div className="App">
+              <Header/>
+              <div className="main">
+                <Routes>
+                  <Route index element={<Calculator/>}/>
+                  <Route path="/characters" element={<Characters/>}/>
+                </Routes>
+              </div>
             </div>
-          </div>
-        </ChakraProvider>
-      </IconContext.Provider>
-    </BrowserRouter>
+          </ChakraProvider>
+        </IconContext.Provider>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 
