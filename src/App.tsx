@@ -18,7 +18,7 @@ const theme = extendTheme({ config });
 const App = () => {
   return (
     <RecoilRoot>
-      <BrowserRouter>
+      <BrowserRouter basename="/genshin-calc-front">
         <IconContext.Provider value={{ color: "white"}}>
           <ChakraProvider theme={theme}>
             <div className="App">
