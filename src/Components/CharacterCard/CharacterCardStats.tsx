@@ -80,7 +80,7 @@ const CharacterCardStats: FC<IProps> = (props) => {
       <CharacterStat
         icon={iconItem.icon}
         title={`Бонус ${iconItem.displayName.toLowerCase()} урона`}
-        value={'0.00%'}
+        value={'10.00%'}
       />
     </div>
   );
