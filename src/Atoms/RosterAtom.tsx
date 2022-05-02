@@ -1,9 +1,8 @@
 import {atom} from "recoil";
-import Character from "genshin-calculator/dist/Entities/Characters/Character";
+import {IRosterCharacterItem} from "../CharacterTypes/IRosterCharacterItem";
 
-const rosterAtom = atom<Character[]>({
+export const rosterAtom = atom<IRosterCharacterItem[]>({
   key: 'RosterAtom',
+  dangerouslyAllowMutability: true,
   default: [],
 });
-
-export {rosterAtom};

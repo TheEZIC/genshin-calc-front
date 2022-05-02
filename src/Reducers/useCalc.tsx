@@ -1,7 +1,6 @@
-import {useRecoilState} from "recoil";
-import {genshinCalcAtom} from "../Atoms/GenshinCalcAtom";
+import CalculatorSingleton from "../CalculatorSingleton";
 
 export function useCalc() {
-  const [calc] = useRecoilState(genshinCalcAtom);
-  return {calc};
+  const calc = CalculatorSingleton.instance;
+  return calc;
 }

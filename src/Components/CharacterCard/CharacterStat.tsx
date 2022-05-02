@@ -5,7 +5,7 @@ import styles from "./CharacterCard.module.scss";
 interface IProps {
   icon: React.ReactNode;
   title: string;
-  value: string;
+  value: string | number;
 }
 
 const CharacterStat: FC<IProps> = ({icon,title,value}) => {

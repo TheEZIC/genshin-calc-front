@@ -8,22 +8,44 @@ import {
   ModalOverlay,
   VStack
 } from "@chakra-ui/react";
-import {charactersList} from "../../CharactersList/CharactersList";
-import AllCharactersModalItem from "./AllCharactersModalItem";
-import {useMyCharacters} from "../../Reducers/useMyCharacters";
+import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
+import CharacterRow from "../CharacterRow/CharacterRow";
 
 interface IProps {
+  emptyText?: string;
+  allList: IBaseCharacter[];
+  localList: IBaseCharacter[];
   isOpen: boolean;
+  onItemClick: (character: IBaseCharacter) => void;
   onClose: () => void;
 }
 
-const AllCharactersModal: FC<IProps> = ({isOpen, onClose}) => {
-  const {myCharacters} = useMyCharacters();
+const AllCharactersModal: FC<IProps> = ({
+  emptyText,
+  allList,
+  localList,
+  isOpen,
+  onItemClick,
+  onClose
+}) => {
+  function handleClick(character: IBaseCharacter) {
+    onItemClick(character);
+    onClose();
+  }
 
   function renderList() {
-    return charactersList
-      .filter(c => !myCharacters.find(m => m.name === c.name))
-      .map(c => <AllCharactersModalItem {...c} onClose={onClose}/>);
+    const filtred = allList.filter(c => !localList.find(m => m.name === c.name));
+
+    if (!filtred.length && emptyText) {
+      return <span>{emptyText}</span>;
+    }
+
+    return filtred.map(c => (
+      <CharacterRow
+        character={c}
+        onItemClick={handleClick}
+      />
+    ));
   }
 
   return (

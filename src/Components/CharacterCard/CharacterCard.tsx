@@ -1,56 +1,30 @@
-import React, {FC} from 'react';
-import {Box, Image} from "@chakra-ui/react";
-
+import React, {Component} from 'react';
+import {Box, BoxProps} from "@chakra-ui/react";
+import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
+import CharacterCardHeader from "./CharacterCardHeader";
+import CharacterCardWeapon from "./CharacterCardWeapon";
+import CharacterCardStats from "./CharacterCardStats";
+import {CharacterCardContext} from "./CharacterCardContext";
 import styles from "./CharacterCard.module.scss";
-import PyroIcon from "../Icons/ElementIcons/PyroIcon";
 
-const CharacterCard: FC = ({children}) => {
-  return (
-    <Box bg="gray.600" className={styles.card}>
-      <div className={styles.characterContainer} style={{backgroundImage:"linear-gradient(to bottom right,rgba(89,84,130,0.3),rgba(184,134,202,0.3)), url('https://frzyc.github.io/genshin-optimizer/static/media/Banner.02accd6cf9a4395a0acd.png')"}}>
-        <Image className={styles.characterImage} objectFit='cover' src={'https://frzyc.github.io/genshin-optimizer/static/media/Icon.0cbbc73454f82af5dab5.png'}/>
-        <div className={styles.characterInfo}>
-          <div className={styles.characterNameElement}>
-            <Box as='span' className={styles.characterName}>
-              Сян Лин
-              {/*{character.name}*/}
-            </Box>
-            <div className={styles.elementIconContainer} style={{backgroundColor:"rgba(191, 40, 24,0.9)"}}>
-              <PyroIcon/>
-            </div>
-          </div>
+interface IProps extends BoxProps {
+  character: IBaseCharacter;
+}
 
-          <div className={styles.lvlConstellations}>
-            <Box as='span' className={styles.lvl}>
-              Ур. 80/90
-              {/*{character.lvl}*/}
-            </Box>
-            <Box as='span' className={styles.constellations} style={{backgroundColor:"rgba(30, 120, 200,0.9)"}}>
-              C0
-              {/*{character.constellations}*/}
-            </Box>
-          </div>
-          <Box as='span'>
-            Таланты 6/6/6
-            {/*{character.talents}*/}
-          </Box>
-        </div>
-      </div>
-      <Box bg="gray.700" className={styles.weaponContainer}>
-        <Image className={styles.weaponImage} src='https://frzyc.github.io/genshin-optimizer/static/media/Icon.adde095365bcfc71f248.png'/>
-        <div className={styles.weaponInfo}>
-          <Box as='span'>
-            Копьё новичка R1
-            {/*{character.weapon.name} {character.weapon.r}*/}
-          </Box>
-          <Box as='span'>
-            Ур. 1/20
-            {/*{character.weapon.lvl}*/}
-          </Box>
-        </div>
+class CharacterCard extends Component<IProps> {
+  public static Header = CharacterCardHeader;
+  public static Weapon = CharacterCardWeapon;
+  public static Stats = CharacterCardStats;
+
+  render() {
+    return (
+      <Box bg="gray.600" className={styles.card} {...this.props}>
+        <CharacterCardContext value={this.props.character}>
+          {this.props.children}
+        </CharacterCardContext>
       </Box>
-    </Box>
-  );
-};
+    );
+  }
+}
 
 export default CharacterCard;

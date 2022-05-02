@@ -3,7 +3,7 @@ import styles from "./Characters.module.scss";
 import EmptyCard from "../../Components/EmptyCard/EmptyCard";
 import AllCharactersModal from "../../Components/AllCharactersModal/AllCharactersModal";
 import {useMyCharacters} from "../../Reducers/useMyCharacters";
-import CharacterFullCard from "../../Components/CharacterFullCard/CharacterFullCard";
+import CharacterCard from "../../Components/CharacterCard/CharacterCard";
 import {charactersList} from "../../CharactersList/CharactersList";
 
 const CharactersList = () => {
@@ -11,10 +11,16 @@ const CharactersList = () => {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const {myCharacters} = useMyCharacters();
+  const {myCharacters, addMyCharacter, removeMyCharacter} = useMyCharacters();
 
   function renderCharacters() {
-    return myCharacters.map(c => <CharacterFullCard {...c}/>)
+    return myCharacters.map(c => (
+      <CharacterCard character={c} w="370px">
+        <CharacterCard.Header {...c} onRemove={() => removeMyCharacter(c)}/>
+        <CharacterCard.Weapon {...c}/>
+        <CharacterCard.Stats {...c}/>
+      </CharacterCard>
+    ));
   }
 
   return (
@@ -26,7 +32,10 @@ const CharactersList = () => {
       />}
       {renderCharacters()}
       <AllCharactersModal
+        allList={charactersList }
+        localList={myCharacters}
         isOpen={isOpen}
+        onItemClick={addMyCharacter}
         onClose={closeModal}
       />
     </div>

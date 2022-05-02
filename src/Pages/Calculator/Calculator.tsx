@@ -1,8 +1,11 @@
-import React, {FC} from 'react';
-import {Container, Box} from "@chakra-ui/react";
-import CharacterCard from "../../Components/CharacterCard/CharacterCard";
+import React, {FC, useEffect, useState} from 'react';
+import {Box, Button, Container, Stat, StatGroup, VStack} from "@chakra-ui/react";
 import styles from "./Calculator.module.scss";
-import EmptyCard from "../../Components/EmptyCard/EmptyCard";
+import CalculatorCharactersList from "./CalculatorCharactersList";
+import SkillTree from "./SkillTree/SkillTree";
+import RotationList from "./RotationList/RotationList";
+import CalculateButton from "./CalculateButton";
+import CalculatorStatGroup from './CalculatorStat/CalculatorStatGroup';
 
 const Calculator: FC = () => {
   return (
@@ -10,12 +13,20 @@ const Calculator: FC = () => {
       <div className={styles.calculatorRosterName}>
         Отряд
       </div>
-      <div className={styles.calculatorRoster}>
-        <CharacterCard/>
-        <CharacterCard/>
-        <CharacterCard/>
-        <EmptyCard title="Добавить персонажа"/>
-      </div>
+      <CalculatorCharactersList/>
+      <Box className={styles.rosterContainer}>
+        <SkillTree/>
+        <RotationList/>
+      </Box>
+      <Box className={styles.calcButtonContainer}>
+        <CalculateButton/>
+      </Box>
+      <Box
+        w="100%"
+        className={styles.calcStatContainer}
+      >
+        <CalculatorStatGroup/>
+      </Box>
     </Container>
   );
 };

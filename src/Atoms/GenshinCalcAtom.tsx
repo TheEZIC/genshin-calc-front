@@ -1,9 +1,6 @@
 import {atom} from "recoil";
-import {GenshinCalculator} from "genshin-calculator";
 
-const genshinCalcAtom = atom<GenshinCalculator>({
+export const genshinCalcAtom = atom<null>({
   key: 'GenshinCalcAtom',
-  default: new GenshinCalculator(),
+  default: null,
 });
-
-export {genshinCalcAtom};

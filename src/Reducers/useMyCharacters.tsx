@@ -1,20 +1,28 @@
 import {useRecoilState} from "recoil";
 import {myCharactersAtom} from "../Atoms/MyCharactersAtom";
 import {IBaseCharacter} from "../CharacterTypes/IBaseCharacter";
+import {useRoster} from "./useRoster";
 
 export function useMyCharacters() {
   const [myCharacters, setMyCharacters] = useRecoilState(myCharactersAtom);
+  const {removeCharacter} = useRoster();
 
   function addMyCharacter(baseCharacter: IBaseCharacter) {
-    setMyCharacters([...myCharacters, {
-      ...baseCharacter,
-      lvl: 1,
-      talents: [],
-    }]);
+    setMyCharacters((current) => [
+      ...current,
+      {
+        ...baseCharacter,
+        lvl: 1,
+        talents: [],
+      }
+    ]);
   }
 
   function removeMyCharacter(baseCharacter: IBaseCharacter) {
-    setMyCharacters(myCharacters.filter(c => c.name !== baseCharacter.name));
+    removeCharacter(baseCharacter);
+    setMyCharacters((current) => current.filter(c => {
+      return c.name !== baseCharacter.name
+    }));
   }
 
   return {
