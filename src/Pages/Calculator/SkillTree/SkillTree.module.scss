@@ -1,0 +1,63 @@
+.container {
+  width: Calc(50% - 10px * 2);
+  margin: 10px;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+.accordion {
+  margin: -5px 0 0 0;
+}
+
+.accordionItem {
+  border: 0;
+
+  button[aria-expanded="true"] {
+    .characterContainer {
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+  }
+}
+
+.characterButton {
+  margin: 5px 0 0 0;
+  padding: 0 !important;
+
+  * {
+    transition: all ease-in-out .1s;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.characterContainer {
+  &:focus{
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+}
+
+.skillItemsContainer {
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.skillItem {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  * {
+    transition: all ease-in-out .05s;
+  }
+  &:hover{
+    color: lighten(rgb(200, 60, 60), 20) !important;
+    svg {
+      color: lighten(rgb(200, 60, 60), 20) !important;
+    }
+  }
+}

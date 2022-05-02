@@ -1,0 +1,31 @@
+.container {
+  width: Calc(50% - 10px * 2);
+  min-height: 100%;
+  margin: 10px;
+  border-radius: 0.75rem;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+.RotationListClean {
+  display: flex;
+  border-radius: 0.75rem 0 0.75rem 0;
+  position: absolute;
+  padding: 5px;
+  z-index: 2;
+  cursor: pointer;
+  padding: 12.5px;
+  svg {
+    color: rgb(200, 60, 60) !important;
+  }
+
+  * {
+    transition: all ease-in-out .1s;
+  }
+
+  &:hover * {
+    fill: lighten(rgb(200, 60, 60), 20);
+  }
+}

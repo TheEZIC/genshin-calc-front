@@ -1,0 +1,26 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 45px;
+  padding: 5px;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+}
+
+.itemImage {
+  width: 35px;
+  margin-right: 10px;
+}
+
+.itemTitle {
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -10,3 +10,25 @@
   flex-wrap: wrap;
   margin: 0 -10px;
 }
+
+.rosterContainer {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calcButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px !important;
+}
+
+.calcButton {
+  border-radius: 0.75rem !important;
+}
+
+.calcStatContainer {
+  display: flex;
+  justify-content: center;
+}

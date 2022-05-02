@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import styles from "./CharacterFullCard.module.scss";
 import {Box} from "@chakra-ui/react";
+import styles from "./CharacterCard.module.scss";
 
 interface IProps {
   icon: React.ReactNode;
