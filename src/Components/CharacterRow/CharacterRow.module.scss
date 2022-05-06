@@ -8,6 +8,9 @@
   border-radius: 0.75rem;
   cursor: pointer;
   user-select: none;
+  background-size: cover !important;
+  background-position: 7px center !important;
+  background-repeat: no-repeat !important;
 }
 
 .itemInfo {

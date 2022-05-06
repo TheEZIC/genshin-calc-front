@@ -5,6 +5,7 @@ import styles from "./CharacterCard.module.scss";
 import {FaTrashAlt} from "react-icons/all";
 import ElementIcon from "../ElementIcon/ElementIcon";
 import {useCharacterCardContext} from "./CharacterCardContext";
+import classNames from "classnames";
 
 interface IProps {
   onRemove?: (character: IBaseCharacter) => void;
@@ -14,15 +15,11 @@ const CharacterCardHeader: FC<IProps> = (props) => {
   const character = useCharacterCardContext();
 
   return (
-    <div
-      className={styles.characterContainer}
-      style={{
-        backgroundImage:`
-          linear-gradient(to bottom right,rgba(89,84,130,0.3),rgba(184,134,202,0.3)), 
-          url('${process.env.PUBLIC_URL}/Assets/CharacterBanners/${character.imageName}')
-          `,
-      }}
-    >
+    <div className={classNames(styles.characterContainer, `star${character.rarity}`)}>
+      <div
+        className={styles.characterNamecard}
+        style={{backgroundImage:`url('${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Namecard.png')`}}
+      />
       {props.onRemove && (
         <Box
           className={styles.characterDelete}
@@ -32,7 +29,7 @@ const CharacterCardHeader: FC<IProps> = (props) => {
           <FaTrashAlt size="20px" color="rgb(200, 60, 60)"/>
         </Box>
       )}
-      <Image className={styles.characterImage} objectFit='cover' src={`${process.env.PUBLIC_URL}/Assets/CharacterImages/${character.imageName}`}/>
+      <Image className={styles.characterImage} objectFit='cover' src={`${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Icon.png`}/>
       <div className={styles.characterInfo}>
         <div className={styles.characterNameElement}>
           <Box as='span' className={styles.characterName}>

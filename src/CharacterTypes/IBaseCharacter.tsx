@@ -4,8 +4,9 @@ import Character from "genshin-calculator/dist/Entities/Characters/Character";
 
 export interface IBaseCharacter {
   name: string;
+  fullName: string;
   creator: Constructor<Character>
   visionType: VisionType;
   displayName: string;
-  imageName: string;
+  rarity: number;
 }

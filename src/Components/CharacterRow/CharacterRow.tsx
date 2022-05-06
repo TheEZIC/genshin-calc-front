@@ -18,12 +18,22 @@ const CharacterRow: FC<IProps> = (props) => {
   }
 
   return (
-    <Box {...props} className={classNames(props.className, styles.item)} bg="gray.700" onClick={handleClick}>
+    <Box
+      {...props}
+      className={classNames(props.className, styles.item)}
+      bg="gray.700"
+      onClick={handleClick}
+      style={{
+        backgroundImage:` 
+          url('${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/NamecardBanner.png')
+          `,
+      }}
+    >
       <div className={styles.itemInfo}>
         <Image
           className={styles.itemImage}
           objectFit='cover'
-          src={`${process.env.PUBLIC_URL}/Assets/CharacterImages/${character.imageName}`}
+          src={`${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Icon.png`}
         />
         <span className={styles.itemTitle}>{character.displayName}</span>
       </div>

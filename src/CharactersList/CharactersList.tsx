@@ -6,17 +6,19 @@ import Ayaka from "genshin-calculator/dist/Lists/Charaters/Ayaka/Ayaka";
 const charactersList: IBaseCharacter[] = [
   {
     name: "Ayaka",
+    fullName: "KamisatoAyaka",
     creator: Ayaka,
     visionType: VisionType.Cryo,
     displayName: "Аяка",
-    imageName: "KamisatoAyaka.png",
+    rarity: 5,
   },
   {
     name: "Xiangling",
+    fullName: "Xiangling",
     creator: Xiangling,
     visionType: VisionType.Pyro,
     displayName: "Сян Линь",
-    imageName: "Xiangling.png",
+    rarity: 4,
   },
 ];
 
