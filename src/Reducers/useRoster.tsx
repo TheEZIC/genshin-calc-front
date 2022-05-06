@@ -9,6 +9,7 @@ export function useRoster() {
   const [roster, setRoster] = useRecoilState(rosterAtom);
 
   function addCharacter(baseCharacter: IBaseCharacter): void {
+    console.log("addCharacter")
     const character = new baseCharacter.creator();
     character.baseStats.applyLvl(80);
 

@@ -15,13 +15,7 @@ const CalculateButton = () => {
 
   function computeRotation() {
     const result = calc.damageCalculator.calcRotation(rotationSkills);
-    const characters = roster.map(r => new r.creator());
-
-    for (let character of characters) {
-      calc.roster.addCharacter(character);
-      character.baseStats.applyLvl(80);
-    }
-
+    console.log(calc);
     setCalcResult(result);
   }
 

@@ -13,6 +13,7 @@ const SkillTree = () => {
 
   useEffect(() => {
     const rosterSkills = calc.roster.charactersSkills;
+    console.log(rosterSkills, "rosterSkills")
     setSkills(rosterSkills);
   }, [roster]);
 
