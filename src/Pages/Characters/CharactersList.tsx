@@ -32,7 +32,7 @@ const CharactersList = () => {
       />}
       {renderCharacters()}
       <AllCharactersModal
-        allList={charactersList }
+        allList={charactersList}
         localList={myCharacters}
         isOpen={isOpen}
         onItemClick={addMyCharacter}

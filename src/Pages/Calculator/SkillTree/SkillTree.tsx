@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Accordion, AccordionButton, AccordionItem, AccordionPanel, Box} from "@chakra-ui/react";
+import {Accordion, Box} from "@chakra-ui/react";
 import AccordionCharacter from "./AccordionCharacter";
 import styles from "./SkillTree.module.scss"
 import {useRoster} from "../../../Reducers/useRoster";
@@ -22,7 +22,7 @@ const SkillTree = () => {
     const nodes: React.ReactNode[] = [];
 
     for (let skillItem of skills) {
-      const key = skillItem.character.name;
+      const key = skillItem.character.title;
       let item = items.get(key);
 
       if (item) {
@@ -35,7 +35,7 @@ const SkillTree = () => {
     }
 
     for (let [key, value] of items.entries()) {
-      const name = value[0].character.name;
+      const name = value[0].character.title;
       const skills = value.map(v => v.skill);
       const baseCharacter = roster.find(r => r.name === name);
 

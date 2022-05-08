@@ -1,8 +1,6 @@
 import React, {FC} from 'react';
 import {Box, Image} from "@chakra-ui/react";
-import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 import styles from "./CharacterCard.module.scss";
-import {FaTrashAlt} from "react-icons/all";
 import ElementIcon from "../ElementIcon/ElementIcon";
 import {useCharacterCardContext} from "./CharacterCardContext";
 import classNames from "classnames";
@@ -24,9 +22,8 @@ const CharacterCardHeader: FC<IProps> = (props) => {
         <Box
           className={styles.characterDelete}
           bg="gray.700"
-          onClick={() => props.onRemove && props.onRemove(props as IBaseCharacter)}
         >
-          <FaTrashAlt size="20px" color="rgb(200, 60, 60)"/>
+          {props.icons}
         </Box>
       )}
       <Image className={styles.characterImage} objectFit='cover' src={`${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Icon.png`}/>

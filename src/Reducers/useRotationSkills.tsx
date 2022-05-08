@@ -11,7 +11,7 @@ export default function useRotationSkills() {
 
   function removeRotationSkill(skill: Skill) {
     setRotationSkills((current) => current.filter(c => {
-      return c.name !== skill.name
+      return c.title !== skill.title
     }));
   }
 

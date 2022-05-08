@@ -1,0 +1,163 @@
+.pageTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+.character {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 45px;
+  padding: 5px;
+  border-radius: 0.75rem;
+  background-size: cover !important;
+  background-position: 7px center !important;
+  background-repeat: no-repeat !important;
+}
+
+.characterEditContainer {
+  display: flex;
+  justify-content: space-between;
+  //width: 100%;
+  margin: 20px 0;
+}
+
+.characterEditableContainer {
+  width: 180px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.characterEditImage {
+  position: absolute;
+}
+
+.characterArtifactEditImage {
+  width: 50%;
+  height: 50%;
+  background-position: center center;
+  background-size: cover;
+  position: absolute;
+}
+
+.characterEditableSpanContainer {
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.75rem;
+  margin: 5px;
+  z-index: 1;
+}
+
+.characterEditableName {
+  margin-right: 5px;
+}
+
+.characterSpanLevelEditable {
+  width: 100%;
+  padding: 0 !important;
+}
+
+.characterSpanTalentEditable {
+  width: 100%;
+  padding: 0 !important;
+}
+
+.characterLevelInput {
+  //max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.characterTalentInput {
+  //width: 10px !important;
+  padding: 0 !important;
+}
+
+.statsContainer {
+  border-radius: 0.75rem;
+  padding: 0 10px 10px 10px;
+  font-weight: bold;
+  z-index: -2;
+}
+
+.statsName {
+  opacity: .7;
+  margin: 5px 0;
+}
+
+.statsItemContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.statsItem {
+  padding: 5px 10px;
+  position: relative;
+  min-height: 44px;
+}
+
+.statsItemBackground {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .1;
+  z-index: 1;
+}
+
+.statsItemContent {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  padding: 5px 300px 5px 10px;
+}
+
+.characterEditableContainerTalents {
+  width: 450px;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.characterTalentsInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.characterTalentsImage {
+  width: 50px;
+  min-height: 50px;
+  margin: 0 10px;
+}
+
+.characterTalentsName {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.characterEditableTalentSpanContainer {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.75rem;
+  margin: 10px;
+}

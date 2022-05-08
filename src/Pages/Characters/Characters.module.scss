@@ -10,3 +10,29 @@
   flex-wrap: wrap;
   margin: -10px -10px 0 -10px;
 }
+
+.iconTrashAlt {
+  size: 20px;
+  margin: 5px 0;
+
+  * {
+    transition: all ease-in-out .1s;
+  }
+
+  &:hover * {
+    fill: lighten(rgb(200, 60, 60), 20);
+  }
+}
+
+.iconPencilAlt {
+  size: 20px;
+  margin: 5px 0;
+
+  * {
+    transition: all ease-in-out .1s;
+  }
+
+  &:hover * {
+    fill: lighten(rgb(60, 200, 60), 20);
+  }
+}

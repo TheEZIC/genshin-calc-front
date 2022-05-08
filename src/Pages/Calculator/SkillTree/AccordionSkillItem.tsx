@@ -14,7 +14,7 @@ const AccordionSkillItem: FC<IProps> = ({skill}) => {
 
   return (
     <Box className={styles.skillItem} onClick={() => addRotationSkill(skill)}>
-      <Box as="span">{skill.name}</Box>
+      <Box as="span">{skill.title}</Box>
       <FaPlus/>
     </Box>
   );

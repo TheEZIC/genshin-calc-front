@@ -9,7 +9,7 @@ const RotationList = () => {
   console.log(Boolean(rotationSkills.length), "test")
 
   function renderRotationSkills() {
-    return rotationSkills.map(s => <span>{s.name}</span>);
+    return rotationSkills.map(s => <span>{s.title}</span>);
   }
 
   return (
