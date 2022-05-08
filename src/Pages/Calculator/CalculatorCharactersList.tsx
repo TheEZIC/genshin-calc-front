@@ -6,6 +6,7 @@ import AllCharactersModal from "../../Components/AllCharactersModal/AllCharacter
 import {useRoster} from "../../Reducers/useRoster";
 import styles from "../Characters/Characters.module.scss";
 import {useCalc} from "../../Reducers/useCalc";
+import {FaTrashAlt} from "react-icons/all";
 
 const CalculatorCharactersList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -23,7 +24,12 @@ const CalculatorCharactersList = () => {
   function renderCharacters() {
     return roster.map(c => (
       <CharacterCard character={c} w="330px">
-        <CharacterCard.Header onRemove={() => removeCharacter(c)}/>
+        <CharacterCard.Header icons={(
+          <FaTrashAlt
+            className={styles.icon}
+            onClick={() => removeCharacter(c)}
+          />
+        )}/>
         <CharacterCard.Weapon/>
       </CharacterCard>
     ));

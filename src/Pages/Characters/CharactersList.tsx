@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import {Link} from "react-router-dom";
 import styles from "./Characters.module.scss";
 import EmptyCard from "../../Components/EmptyCard/EmptyCard";
 import AllCharactersModal from "../../Components/AllCharactersModal/AllCharactersModal";
 import {useMyCharacters} from "../../Reducers/useMyCharacters";
 import CharacterCard from "../../Components/CharacterCard/CharacterCard";
 import {charactersList} from "../../CharactersList/CharactersList";
+import {FaPencilAlt, FaTrashAlt} from "react-icons/all";
 
 const CharactersList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,9 +18,19 @@ const CharactersList = () => {
   function renderCharacters() {
     return myCharacters.map(c => (
       <CharacterCard character={c} w="370px">
-        <CharacterCard.Header {...c} onRemove={() => removeMyCharacter(c)}/>
-        <CharacterCard.Weapon {...c}/>
-        <CharacterCard.Stats {...c}/>
+        <CharacterCard.Header icons={(
+          <>
+            <FaTrashAlt
+              className={styles.iconTrashAlt}
+              onClick={() => removeMyCharacter(c)}
+            />
+            <Link to={`/characters/${c.name}`}>
+              <FaPencilAlt className={styles.iconPencilAlt}/>
+            </Link>
+          </>
+        )}/>
+        <CharacterCard.Weapon/>
+        <CharacterCard.Stats/>
       </CharacterCard>
     ));
   }

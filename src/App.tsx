@@ -7,6 +7,8 @@ import Calculator from "./Pages/Calculator/Calculator";
 import Characters from "./Pages/Characters/Characters";
 import "./App.scss";
 import {RecoilRoot} from "recoil";
+import CharacterEditor from "./Pages/CharacterEditor/CharacterEditor";
+import {isNode} from "genshin-calculator/dist/Helpers/Envirement";
 
 const config = {
   initialColorMode: 'dark',
@@ -16,6 +18,8 @@ const config = {
 const theme = extendTheme({ config });
 
 const App = () => {
+  console.log(isNode, "is node")
+
   return (
     <RecoilRoot>
       <BrowserRouter basename="/genshin-calc-front">
@@ -27,6 +31,7 @@ const App = () => {
                 <Routes>
                   <Route index element={<Calculator/>}/>
                   <Route path="/characters" element={<Characters/>}/>
+                  <Route path="/characters/:characterName" element={<CharacterEditor/>}/>
                 </Routes>
               </div>
             </div>

@@ -34,6 +34,8 @@ const SkillTree = () => {
       items.set(key, item);
     }
 
+    console.log(items.entries());
+
     for (let [key, value] of items.entries()) {
       const name = value[0].character.title;
       const skills = value.map(v => v.skill);

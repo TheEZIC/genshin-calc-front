@@ -6,7 +6,7 @@ import {useCharacterCardContext} from "./CharacterCardContext";
 import classNames from "classnames";
 
 interface IProps {
-  onRemove?: (character: IBaseCharacter) => void;
+  icons?: React.ReactNode;
 }
 
 const CharacterCardHeader: FC<IProps> = (props) => {
@@ -18,7 +18,7 @@ const CharacterCardHeader: FC<IProps> = (props) => {
         className={styles.characterNamecard}
         style={{backgroundImage:`url('${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Namecard.png')`}}
       />
-      {props.onRemove && (
+      {props.icons && (
         <Box
           className={styles.characterDelete}
           bg="gray.700"
