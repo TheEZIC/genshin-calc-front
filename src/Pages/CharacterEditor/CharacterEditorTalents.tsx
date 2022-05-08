@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Box, Editable, EditableInput, EditablePreview, Image} from "@chakra-ui/react";
 import styles from "./CharacterEditor.module.scss";
+import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 
-const CharacterEditorTalents = () => {
+interface IProps {
+  baseCharacter: IBaseCharacter;
+}
+
+const CharacterEditorTalents: FC<IProps> = (props) => {
   return (
     <Box className={styles.characterEditContainer}>
       <Box className={styles.characterEditableContainerTalents} bg="gray.700">
-        <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/KamisatoAyaka/skills/NormalAttack.png`}/>
-        {/*<Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${baseCharacter.fullName}/skills/NormalAttack.png`}/>*/}
+        <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/skills/NormalAttack.png`}/>
         <div className={styles.characterTalentsInfo}>
           <Box className={styles.characterTalentsName} as="span">Нанамэ</Box>
           <Box className={styles.characterTalentsType} as="span">Normal/Charged Attack</Box>
@@ -21,7 +25,7 @@ const CharacterEditorTalents = () => {
         </Box>
       </Box>
       <Box className={styles.characterEditableContainerTalents} bg="gray.700">
-        <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/KamisatoAyaka/skills/ElementalSkill.png`}/>
+        <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/skills/ElementalSkill.png`}/>
         <div className={styles.characterTalentsInfo}>
           <Box className={styles.characterTalentsName} as="span">Искусство Камисато: Хёка</Box>
           <Box className={styles.characterTalentsType} as="span">Elemental Skill</Box>
@@ -35,7 +39,7 @@ const CharacterEditorTalents = () => {
         </Box>
       </Box>
       <Box className={styles.characterEditableContainerTalents} bg="gray.700">
-        <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/KamisatoAyaka/skills/ElementalBurst.png`}/>
+        <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/skills/ElementalBurst.png`}/>
         <div className={styles.characterTalentsInfo}>
           <Box className={styles.characterTalentsName} as="span">Искусство Камисато: Сомэцу</Box>
           <Box className={styles.characterTalentsType} as="span">Elemental Burst</Box>

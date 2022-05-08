@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Box, Editable, EditableInput, EditablePreview, Image} from "@chakra-ui/react";
 import styles from "./CharacterEditor.module.scss";
 import classNames from "classnames";
+import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 
-const CharacterEditorInfo = () => {
+interface IProps {
+  baseCharacter: IBaseCharacter;
+}
+
+const CharacterEditorInfo: FC<IProps> = (props) => {
   return (
     <Box className={styles.characterEditContainer}>
       <Box className={styles.characterEditableContainer}  bg="gray.700">
-        <Image className={styles.characterEditImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/KamisatoAyaka/Constellation.png`}/>
-        {/*<Image className={styles.characterEditImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${baseCharacter.fullName}/Constellation.png`}/>*/}
+        <Image className={styles.characterEditImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/Constellation.png`}/>
         <Box className={styles.characterEditableSpanContainer} bg="gray.600">
           <Box as={"span"} className={styles.characterEditableName}>Ур.</Box>
           <Editable defaultValue='1'>
@@ -26,7 +30,7 @@ const CharacterEditorInfo = () => {
       </Box>
       <Box
         className={classNames(styles.characterEditableContainer)}
-        // className={classNames(styles.characterEditableContainer, `star${baseCharacter.rarity}`)}
+        // className={classNames(styles.characterEditableContainer, `star${Weapon.rarity}`)}
         bg="gray.700"
       >
         <Image className={styles.characterEditImage} src={`${process.env.PUBLIC_URL}/Assets/Weapons/Swords/SkywardBlade.png`}/>
@@ -47,6 +51,7 @@ const CharacterEditorInfo = () => {
       </Box>
       <Box
         className={classNames(styles.characterEditableContainer)}
+        // className={classNames(styles.characterEditableContainer, `star${Artifacts.rarity}`)}
         bg="gray.700"
       >
         <Image className={styles.characterArtifactEditImage} src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/Flower.png`}/>

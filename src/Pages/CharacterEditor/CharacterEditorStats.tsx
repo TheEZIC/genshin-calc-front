@@ -16,6 +16,7 @@ import CDReduction from "../../Components/Icons/StatIcons/CDReduction";
 import ShieldStrength from "../../Components/Icons/StatIcons/ShieldStrength";
 import PyroIcon from "../../Components/Icons/ElementIcons/PyroIcon";
 import HydroIcon from "../../Components/Icons/ElementIcons/HydroIcon";
+import DendroIcon from "../../Components/Icons/ElementIcons/DendroIcon";
 import ElectroIcon from "../../Components/Icons/ElementIcons/ElectroIcon";
 import AnemoIcon from "../../Components/Icons/ElementIcons/AnemoIcon";
 import CryoIcon from "../../Components/Icons/ElementIcons/CryoIcon";
@@ -154,7 +155,7 @@ const CharacterEditorStats = () => {
           <div className={styles.statsItemContent}>
             <CharacterStat
               icon={<PyroIcon/>}
-              title={'Бонус пиро урона'}
+              title={'Бонус Пиро урона'}
               value={`10%`}
             />
           </div>
@@ -193,6 +194,26 @@ const CharacterEditorStats = () => {
           <Box bg="gray.400" className={styles.statsItemBackground}></Box>
           <div className={styles.statsItemContent}>
             <CharacterStat
+              icon={<DendroIcon/>}
+              title={'Бонус Дендро урона'}
+              value={`10%`}
+            />
+          </div>
+        </Box>
+        <Box className={styles.statsItem}>
+          <Box bg="gray.900" className={styles.statsItemBackground}></Box>
+          <div className={styles.statsItemContent}>
+            <CharacterStat
+              icon={<DendroIcon/>}
+              title={'Дендро сопротивление'}
+              value={`10%`}
+            />
+          </div>
+        </Box>
+        <Box className={styles.statsItem}>
+          <Box bg="gray.400" className={styles.statsItemBackground}></Box>
+          <div className={styles.statsItemContent}>
+            <CharacterStat
               icon={<ElectroIcon/>}
               title={'Бонус Электро урона'}
               value={`10%`}
@@ -210,25 +231,6 @@ const CharacterEditorStats = () => {
           </div>
         </Box>
         <Box className={styles.statsItem}>
-          <Box bg="gray.400" className={styles.statsItemBackground}></Box>
-          <div className={styles.statsItemContent}>
-            <CharacterStat
-              icon={<AnemoIcon/>}
-              title={'Бонус Анемо урона'}
-              value={`10%`}
-            />
-          </div>
-        </Box>
-        <Box className={styles.statsItem}>
-          <Box bg="gray.900" className={styles.statsItemBackground}></Box>
-          <div className={styles.statsItemContent}>
-            <CharacterStat
-              icon={<AnemoIcon/>}
-              title={'Анемо сопротивление'}
-              value={`10%`}
-            />
-          </div>
-        </Box><Box className={styles.statsItem}>
         <Box bg="gray.400" className={styles.statsItemBackground}></Box>
         <div className={styles.statsItemContent}>
           <CharacterStat

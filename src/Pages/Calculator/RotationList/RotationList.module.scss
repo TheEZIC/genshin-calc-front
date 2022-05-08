@@ -10,10 +10,8 @@
 }
 
 .RotationListClean {
-  display: flex;
   border-radius: 0.75rem 0 0.75rem 0;
   position: absolute;
-  padding: 5px;
   z-index: 2;
   cursor: pointer;
   padding: 12.5px;
@@ -27,5 +25,9 @@
 
   &:hover * {
     fill: lighten(rgb(200, 60, 60), 20);
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 5px;
   }
 }

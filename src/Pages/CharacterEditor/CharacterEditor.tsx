@@ -21,8 +21,8 @@ const CharacterEditor: FC<IProps> = (props) => {
     <Container maxW="1440px">
       <h2 className={styles.pageTitle}>Редактирование персонажей</h2>
       <CharacterRow character={baseCharacter}/>
-      <CharacterEditorInfo/>
-      <CharacterEditorTalents/>
+      <CharacterEditorInfo baseCharacter={baseCharacter}/>
+      <CharacterEditorTalents baseCharacter={baseCharacter}/>
       <CharacterEditorStats/>
     </Container>
   );

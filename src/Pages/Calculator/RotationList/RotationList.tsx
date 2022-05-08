@@ -13,7 +13,7 @@ const RotationList = () => {
   }
 
   return (
-    <Box bg="gray.600" maxW="50%" className={styles.container}>
+    <Box bg="gray.600" className={styles.container}>
       {Boolean(rotationSkills.length) && (
         <Box
           className={styles.RotationListClean}
