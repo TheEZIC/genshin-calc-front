@@ -9,6 +9,7 @@ import "./App.scss";
 import {RecoilRoot} from "recoil";
 import CharacterEditor from "./Pages/CharacterEditor/CharacterEditor";
 import {isNode} from "genshin-calculator/dist/Helpers/Envirement";
+import Artifacts from "./Pages/Artifacts/Artifacts";
 
 const config = {
   initialColorMode: 'dark',
@@ -32,6 +33,7 @@ const App = () => {
                   <Route index element={<Calculator/>}/>
                   <Route path="/characters" element={<Characters/>}/>
                   <Route path="/characters/:characterName" element={<CharacterEditor/>}/>
+                  <Route path="/artifacts" element={<Artifacts/>}/>
                 </Routes>
               </div>
             </div>
