@@ -7,6 +7,7 @@ import {useMyCharacters} from "../../Reducers/useMyCharacters";
 import CharacterCard from "../../Components/CharacterCard/CharacterCard";
 import {charactersList} from "../../CharactersList/CharactersList";
 import {FaPencilAlt, FaTrashAlt} from "react-icons/all";
+import CalcStores from "../../CalcStores/CalcStores";
 
 const CharactersList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,23 +17,27 @@ const CharactersList = () => {
   const {myCharacters, addMyCharacter, removeMyCharacter} = useMyCharacters();
 
   function renderCharacters() {
-    return myCharacters.map(c => (
-      <CharacterCard character={c} w="370px">
-        <CharacterCard.Header icons={(
-          <>
-            <FaTrashAlt
-              className={styles.iconTrashAlt}
-              onClick={() => removeMyCharacter(c)}
-            />
-            <Link to={`/characters/${c.name}`}>
-              <FaPencilAlt className={styles.iconPencilAlt}/>
-            </Link>
-          </>
-        )}/>
-        <CharacterCard.Weapon/>
-        <CharacterCard.Stats/>
-      </CharacterCard>
-    ));
+    return myCharacters.map(c => {
+      const coreCharacter = CalcStores.myCharacters.getByName(c.name)!;
+
+      return (
+        <CharacterCard character={c} w="370px">
+          <CharacterCard.Header icons={(
+            <>
+              <FaTrashAlt
+                className={styles.iconTrashAlt}
+                onClick={() => removeMyCharacter(c)}
+              />
+              <Link to={`/characters/${c.name}`}>
+                <FaPencilAlt className={styles.iconPencilAlt}/>
+              </Link>
+            </>
+          )}/>
+          <CharacterCard.Weapon/>
+          <CharacterCard.Stats coreCharacter={coreCharacter}/>
+        </CharacterCard>
+      )
+    });
   }
 
   return (

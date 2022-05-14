@@ -3,15 +3,16 @@ import {rosterAtom} from "../Atoms/RosterAtom";
 import {IRosterCharacterItem} from "../CharacterTypes/IRosterCharacterItem";
 import {IBaseCharacter} from "../CharacterTypes/IBaseCharacter";
 import {useCalc} from "./useCalc";
+import CalcStores from "../CalcStores/CalcStores";
 
 export function useRoster() {
   const calc = useCalc();
   const [roster, setRoster] = useRecoilState(rosterAtom);
 
   function addCharacter(baseCharacter: IBaseCharacter): void {
-    console.log("addCharacter")
-    const character = new baseCharacter.creator();
-    character.baseStats.applyLvl(80);
+    const character = CalcStores.myCharacters.getByName(baseCharacter.name);
+
+    if (!character) return;
 
     const rosterCharacter: IRosterCharacterItem = {
       ...baseCharacter,

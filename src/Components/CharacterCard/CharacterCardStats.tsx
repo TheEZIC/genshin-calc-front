@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import CharacterStat from "./CharacterStat";
 import HPIcon from "../Icons/StatIcons/HPIcon";
 import ATKIcon from "../Icons/StatIcons/ATKIcon";
@@ -10,16 +10,17 @@ import CritDMGIcon from "../Icons/StatIcons/CritDMGIcon";
 import VisionIconsList from "./VisionIconsList";
 import styles from "./CharacterCard.module.scss";
 import {useCharacterCardContext} from "./CharacterCardContext";
+import {useCalc} from "../../Reducers/useCalc";
+import CalcStores from "../../CalcStores/CalcStores";
+import Character from "genshin-calculator/dist/Entities/Characters/Character";
 
 interface IProps {
+  coreCharacter: Character;
 }
 
 const CharacterCardStats: FC<IProps> = (props) => {
   const character = useCharacterCardContext();
-  const coreCharacter = new character.creator();
-  coreCharacter.baseStats.applyLvl(80);
-
-  console.log(coreCharacter.calculatorStats.HP.calc(), "HP")
+  const {coreCharacter} = props;
 
   const [HP, setHP] = useState<number>(coreCharacter.calculatorStats.HP.calc());
   const [atk, setAtk] = useState<number>(coreCharacter.calculatorStats.ATK.calc());

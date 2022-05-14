@@ -2,13 +2,13 @@ import React, {FC} from 'react';
 import {Box} from "@chakra-ui/react";
 import styles from "./CharacterCard.module.scss";
 
-interface IProps {
+export interface ICharacterStatProps {
   icon: React.ReactNode;
   title: string;
   value: string | number;
 }
 
-const CharacterStat: FC<IProps> = ({icon,title,value}) => {
+const CharacterStat: FC<ICharacterStatProps> = ({icon,title,value}) => {
   return (
     <div className={styles.stats}>
       <div className={styles.iconStat}>

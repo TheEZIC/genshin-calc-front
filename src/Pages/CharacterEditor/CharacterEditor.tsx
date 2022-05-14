@@ -1,4 +1,5 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import {Container} from "@chakra-ui/react";
 import styles from "./CharacterEditor.module.scss";
 import CharacterRow from "../../Components/CharacterRow/CharacterRow";
@@ -12,23 +13,41 @@ import Character from "genshin-calculator/dist/Entities/Characters/Character";
 import CalcStores from "../../CalcStores/CalcStores";
 
 interface IProps {
-
 }
 
 const CharacterEditor: FC<IProps> = (props) => {
   const {characterName} = useParams<"characterName">();
+  const [baseCharacter, setBaseCharacter] = useState<IBaseCharacter>();
+  const [coreCharacter, setCoreCharacter] = useState<Character>();
   const {myCharacters} = useMyCharacters();
-  const baseCharacter = myCharacters.find(c => c.name === characterName)!;
+  const navigate = useNavigate();
 
-  return (
+  useEffect(() => {
+    const _baseCharacter = myCharacters.find(c => c.name === characterName);
+
+    if (!_baseCharacter) {
+      return navigate("/characters");
+    }
+
+    const _coreCharacter = CalcStores.myCharacters.getByName(_baseCharacter.name);
+
+    if (!_coreCharacter) {
+      return navigate("/characters");
+    }
+
+    setBaseCharacter(_baseCharacter);
+    setCoreCharacter(_coreCharacter);
+  }, []);
+
+  return baseCharacter ? (
     <Container maxW="1440px">
       <h2 className={styles.pageTitle}>Редактирование персонажей</h2>
       <CharacterRow character={baseCharacter}/>
-      <CharacterEditorInfo baseCharacter={baseCharacter}/>
+      <CharacterEditorInfo baseCharacter={baseCharacter} coreCharacter={coreCharacter!}/>
       <CharacterEditorTalents baseCharacter={baseCharacter}/>
-      <CharacterEditorStats/>
+      <CharacterEditorStats baseCharacter={baseCharacter}/>
     </Container>
-  );
+  ) : <></>;
 };
 
 export default CharacterEditor;

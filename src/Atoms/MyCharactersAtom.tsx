@@ -3,5 +3,6 @@ import {IMyCharacter} from "../CharacterTypes/IMyCharacter";
 
 export const myCharactersAtom = atom<IMyCharacter[]>({
   key: 'MyCharactersAtom',
+  dangerouslyAllowMutability: true,
   default: [],
 });

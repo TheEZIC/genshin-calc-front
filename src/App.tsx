@@ -19,11 +19,9 @@ const config = {
 const theme = extendTheme({ config });
 
 const App = () => {
-  console.log(isNode, "is node")
-
   return (
     <RecoilRoot>
-      <BrowserRouter basename="/genshin-calc-front">
+      <BrowserRouter basename={!process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? "" : "/genshin-calc-front"}>
         <IconContext.Provider value={{ color: "white"}}>
           <ChakraProvider theme={theme}>
             <div className="App">
