@@ -6,7 +6,10 @@ import {useParams} from "react-router-dom";
 import {useMyCharacters} from "../../Reducers/useMyCharacters";
 import CharacterEditorInfo from "./CharacterEditorInfo";
 import CharacterEditorTalents from "./CharacterEditorTalents";
-import CharacterEditorStats from "./CharacterEditorStats";
+import CharacterEditorStats from "./Stats/CharacterEditorStats";
+import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
+import Character from "genshin-calculator/dist/Entities/Characters/Character";
+import CalcStores from "../../CalcStores/CalcStores";
 
 interface IProps {
 

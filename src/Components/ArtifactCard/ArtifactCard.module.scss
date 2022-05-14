@@ -1,0 +1,72 @@
+.card {
+  font-size: 1.25rem;
+  width: 200px;
+  min-height: 200px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin: 10px;
+  position: relative;
+}
+
+.artifactDelete {
+  display: flex;
+  border-radius: 0.75rem 0 0.75rem 0;
+  position: absolute;
+  padding: 10px 5px;
+  z-index: 2;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.icon {
+  size: 20px;
+  color: rgb(200, 60, 60);
+  margin: 5px 0;
+
+  * {
+    transition: all ease-in-out .1s;
+  }
+
+  &:hover * {
+    fill: lighten(rgb(200, 60, 60), 20);
+  }
+}
+
+.artifactImage {
+  width: 200px;
+  z-index: 1;
+  position: absolute;
+  top: -30px;
+}
+
+.artifactStat {
+  z-index: 2;
+  width: 100%;
+  min-height: 90px;
+  margin-top: 140px;
+}
+
+.artifactMainStatContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.artifactSubStatContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.statsItem{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.iconStat {
+  fill: white;
+  display: inherit;
+  svg{
+    margin-right: 5px;
+    width: 1.1rem;
+  }
+}
