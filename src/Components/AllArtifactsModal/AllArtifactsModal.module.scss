@@ -1,16 +1,24 @@
+.artifactSet {
+  width: 100%;
+  margin-right: 5px;
+}
+
 .artifactsModalContainer {
   width: 100%;
 }
 
+.artifactsSetContainer {
+  display: flex;
+}
+
 .accordionContainer {
-  width: 400px;
   position: relative;
 }
 
 .accordionBody {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start !important;
+  justify-content: space-between;
   padding: 5px !important;
 
   &:focus {
@@ -28,10 +36,6 @@
   align-items: flex-start;
 }
 
-.editablePreview {
-
-}
-
 .editableInput {
   text-align: start !important;
 
@@ -41,11 +45,10 @@
 }
 
 .accordionItemsContainer {
-  width: 100%;
+  min-width: 100%;
   position: absolute;
   border-radius: 1rem;
   padding: 10px 0 !important;
-  overflow: hidden;
 }
 
 .artifactSetContainer {
@@ -53,13 +56,44 @@
   align-items: center;
   padding: 5px 0;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover {
-    background-color: rgba(211, 211, 211, 0.2);
+    background-color: rgba(200, 200, 200, 0.2);
   }
 }
 
 .artifactSetImage {
   width: 30px;
   margin: 0 10px 0 20px;
+}
+
+.accordionSetRarity {
+  position: relative;
+  height: 100%;
+}
+
+.accordionSetRarityContainer {
+  height: 100%;
+}
+
+.iconStat {
+  fill: white;
+  display: inherit;
+
+  svg{
+    margin-right: 5px;
+    width: 1.1rem;
+  }
+}
+
+.iconRarityStat {
+  margin: 0 15px 0 20px;
+  fill: white;
+  display: inherit;
+
+  svg{
+    margin-right: 5px;
+    width: 1.1rem;
+  }
 }

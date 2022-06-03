@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from "@chakra-ui/react";
-import styles from './../AllArtifactsModal.module.scss';
+import styles from '../../AllArtifactsModal.module.scss';
 
 const ArtifactSet = () => {
   return (

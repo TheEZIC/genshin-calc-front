@@ -45,7 +45,8 @@ const AllArtifactsModal: FC<IProps> = ({
   //   ));
   // }
   return (
-    isOpen ? <Modal size="4xl" isOpen={isOpen} onClose={onClose}>
+    isOpen ? <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+      {/*lg*/}
       <ModalOverlay/>
       <ModalContent bg="gray.600">
         <ModalHeader>Редактор артефактов</ModalHeader>
