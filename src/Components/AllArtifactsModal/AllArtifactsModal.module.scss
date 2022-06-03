@@ -1,0 +1,65 @@
+.artifactsModalContainer {
+  width: 100%;
+}
+
+.accordionContainer {
+  width: 400px;
+  position: relative;
+}
+
+.accordionBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  padding: 5px !important;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.accordionHeader {
+  font-size: 0.8rem;
+}
+
+.editableContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.editablePreview {
+
+}
+
+.editableInput {
+  text-align: start !important;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.accordionItemsContainer {
+  width: 100%;
+  position: absolute;
+  border-radius: 1rem;
+  padding: 10px 0 !important;
+  overflow: hidden;
+}
+
+.artifactSetContainer {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(211, 211, 211, 0.2);
+  }
+}
+
+.artifactSetImage {
+  width: 30px;
+  margin: 0 10px 0 20px;
+}

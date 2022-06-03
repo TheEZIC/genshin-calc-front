@@ -1,7 +1,14 @@
 import React, {FC} from 'react';
-import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
-import CharacterRow from "../CharacterRow/CharacterRow";
-import {Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, VStack} from "@chakra-ui/react";
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  VStack
+} from "@chakra-ui/react";
+import ArtifactEditor from "./ArtifactEditor/ArtifactEditor";
 
 interface IProps {
   // allList: IBaseCharacter[];
@@ -38,14 +45,14 @@ const AllArtifactsModal: FC<IProps> = ({
   //   ));
   // }
   return (
-    isOpen ? <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+    isOpen ? <Modal size="4xl" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay/>
       <ModalContent bg="gray.600">
-        <ModalHeader>Выберите персонажа</ModalHeader>
+        <ModalHeader>Редактор артефактов</ModalHeader>
         <ModalCloseButton/>
         <ModalBody>
           <VStack>
-            {/*{renderList()}*/}
+            <ArtifactEditor />
           </VStack>
         </ModalBody>
       </ModalContent>
