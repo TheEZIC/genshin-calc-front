@@ -27,14 +27,45 @@ export function useMyCharacters() {
     }
 
     CalcStores.myCharacters.add(character);
+
     setMyCharacters((current) => [
       ...current,
       {
         ...baseCharacter,
         lvl: 1,
         talents: [],
+        stats,
       }
     ]);
+
+    for (let coreStat of character.calculatorStats.list) {
+      let stat = {
+        name: coreStat.title,
+        value: coreStat.calc(),
+      }
+
+      coreStat.onChange.subscribe((value) => {
+        setMyCharacters((current) => {
+          const myCharacter = myCharacters.find(c => c.name === baseCharacter.name);
+
+          console.log(myCharacter, myCharacters, "statChange");
+
+          if (!myCharacter) return current;
+
+          current = current.filter(c => c.name !== myCharacter.name);
+          myCharacter.stats = myCharacter.stats.filter(s => s.name !== stat.name);
+          myCharacter.stats.push({
+            name: stat.name,
+            value,
+          });
+
+          return [
+            ...current,
+            myCharacter,
+          ];
+        });
+      });
+    }
   }
 
   function removeMyCharacter(baseCharacter: IBaseCharacter) {
@@ -49,6 +80,7 @@ export function useMyCharacters() {
 
   return {
     myCharacters,
+    findMyCharacterByName,
     addMyCharacter,
     removeMyCharacter,
   }

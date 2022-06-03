@@ -9,4 +9,5 @@ export interface IMyCharacterStat {
 export interface IMyCharacter extends IBaseCharacter {
   lvl: number;
   talents: ITalent[];
+  stats: IMyCharacterStat[];
 }
