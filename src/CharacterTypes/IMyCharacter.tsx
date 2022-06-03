@@ -1,7 +1,7 @@
 import {ITalent} from "./ITalent";
-import {IBaseCharacter} from "./IBaseCharacter";
+import {IBaseCharacterWithStats} from "./IBaseCharacterWithStats";
 
-export interface IMyCharacter extends IBaseCharacter {
+export interface IMyCharacter extends IBaseCharacterWithStats {
   lvl: number;
   talents: ITalent[];
 }
