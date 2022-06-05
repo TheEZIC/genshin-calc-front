@@ -28,6 +28,7 @@
 }
 
 .accordionItemContainer {
+  margin: 0 0 0 10px;
   height: 100%;
   border: 0;
 }
@@ -46,11 +47,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 0 0 0 10px !important;
 }
 
 .editorHeader {
   margin-top: 5px;
   font-size: 0.8rem;
+}
+
+.editableInput {
+  text-align: start !important;
+
+  &:focus {
+    box-shadow: none !important;
+  }
 }
 
 .editableLvl {
@@ -76,20 +86,20 @@
   padding: 5px 0;
   cursor: pointer;
   overflow: hidden;
-
-  &:hover {
-    background-color: rgba(200, 200, 200, 0.2);
-  }
 }
 
 .artifactSetImage {
   width: 30px;
-  margin: 0 10px 0 20px;
+  margin: 0 0 0 10px;
+}
+
+.iconRarityStat {
+  margin-left: 5px;
 }
 
 .iconStat {
   fill: white;
-  display: inherit;
+  display: flex;
 
   svg{
     margin-right: 5px;
@@ -103,14 +113,13 @@
   flex-direction: column;
   border-radius: 0.75rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  width: 98px;
   padding: 0 10px;
-  margin-right: 5px;
 }
 
 .accordionEditorTypeContainer {
   display: flex;
-  margin: 5px 5px 5px 0;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
 }
 
 .accordionTypeImage {
@@ -148,4 +157,37 @@
   &:focus {
     box-shadow: none !important;
   }
+}
+
+.artifactEditorButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  min-height: 30px;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 20px;
+  color: rgb(200, 60, 60);
+  margin: 5px 0;
+  cursor: pointer;
+
+  * {
+    transition: all ease-in-out .1s;
+  }
+
+  &:hover * {
+    fill: lighten(rgb(200, 60, 60), 20);
+  }
+}
+
+.accordionFixedWidth {
+  width: 150px;
+}
+
+.accordionSelect {
+  margin: 0 0 0 10px;
 }

@@ -1,0 +1,40 @@
+.artifactSet {
+  margin-right: 5px;
+}
+
+.accordionContainer {
+  position: relative;
+  height: 100%;
+  border-radius: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.accordionItemContainer {
+  height: 100%;
+  border: 0;
+}
+
+.accordionBody {
+  height: 100%;
+  justify-content: space-between;
+  padding: 0px !important;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.accordionPanelContainer {
+  min-width: 100%;
+  position: absolute;
+  border-radius: 0.75rem;
+  padding: 10px 0 !important;
+  z-index: 1;
+}
+
+.selectItem {
+  &:hover {
+    background-color: rgba(200, 200, 200, 0.2);
+  }
+}

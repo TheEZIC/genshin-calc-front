@@ -1,73 +1,49 @@
 import React from 'react';
 import styles from './../AllArtifactsModal.module.scss';
-import ArtifactEditorAccordionSet from "./ArtifactEditorComponents/ArtifactEditorAccordionSet";
-import ArtifactAccordionSetRarity from "./ArtifactEditorComponents/ArtifactAccordionSetRarity";
-import ArtifactAccordion from "./ArtifactAccordion";
 import ArtifactEditorLvl from "./ArtifactEditorComponents/ArtifactEditorLvl";
-import ArtifactEditorAccordionType from "./ArtifactEditorComponents/ArtifactEditorAccordionType";
-import ArtifactEditorStat from "./ArtifactEditorComponents/ArtifactEditorStat";
+import ArtifactEditorStatRow from "./ArtifactEditorComponents/ArtifactEditorStatRow";
+import {Box} from "@chakra-ui/react";
+import {FaPencilAlt, FaPlus, FaTrashAlt} from "react-icons/all";
+import AccordionSet from "./ArtifactEditorComponents/Accordions/AccordionSet";
+import AccordionRarity from "./ArtifactEditorComponents/Accordions/AccordionRarity";
+import AccordionType from "./ArtifactEditorComponents/Accordions/AccordionType";
+import { ArtifactEditorContext } from './ArtifactEditorComponents/ArtifactEditorContext';
 
 const ArtifactEditor = () => {
   return (
-    <div className={styles.artifactEditor}>
-      <div className={styles.artifactsEditorModal}>
-        <ArtifactAccordion
-          artifactEditor={<ArtifactEditorAccordionSet />}
-          setGrow={1}
-        />
-        <ArtifactAccordion
-          artifactEditor={<ArtifactAccordionSetRarity />}
-          setGrow={0}
-        />
-      </div>
-      <div className={styles.artifactsEditorModal}>
-        <ArtifactAccordion
-          artifactEditor={<ArtifactEditorAccordionType />}
-          setGrow={1}
-        />
-        <ArtifactEditorLvl />
-      </div>
-      <div className={styles.artifactEditorStatsContainer}>
-        <span className={styles.artifactEditorStatsTitle}>Главная характеристика</span>
+    <ArtifactEditorContext value={{
+      subStatsCount,
+      setSubStatsCount,
+      maxSubStats,
+      setMaxSubStats,
+    }}>
+      <div className={styles.artifactEditor}>
+        {/*Выбор сета и звезд*/}
         <div className={styles.artifactsEditorModal}>
-          <ArtifactAccordion
-            artifactEditor={<ArtifactEditorAccordionType />}
-            setGrow={0}
-          />
-          <ArtifactEditorStat setGrow={1} />
+          <AccordionSet />
+          <AccordionRarity />
         </div>
-        <span className={styles.artifactEditorStatsTitle}>Дополнительные характеристики</span>
+        {/*Выбор типа и уровня*/}
         <div className={styles.artifactsEditorModal}>
-          <ArtifactAccordion
-            artifactEditor={<ArtifactEditorAccordionType />}
-            setGrow={0}
-          />
-          <ArtifactEditorStat setGrow={1} />
+          <AccordionType />
+          <ArtifactEditorLvl />
         </div>
-        <div className={styles.artifactsEditorModal}>
-          <ArtifactAccordion
-            artifactEditor={<ArtifactEditorAccordionType />}
-            setGrow={0}
-          />
-          <ArtifactEditorStat setGrow={1} />
-        </div>
-        <div className={styles.artifactsEditorModal}>
-          <ArtifactAccordion
-            artifactEditor={<ArtifactEditorAccordionType />}
-            setGrow={0}
-          />
-          <ArtifactEditorStat setGrow={1} />
-        </div>
-        <div className={styles.artifactsEditorModal}>
-          <ArtifactAccordion
-            artifactEditor={<ArtifactEditorAccordionType />}
-            setGrow={0}
-          />
-          <ArtifactEditorStat setGrow={1} />
+        {/*Характеристики*/}
+        <div className={styles.artifactEditorStatsContainer}>
+          <span className={styles.artifactEditorStatsTitle}>Главная характеристика</span>
+          <ArtifactEditorStatRow />
+          <span className={styles.artifactEditorStatsTitle}>Дополнительные характеристики</span>
+          {renderSubStats()}
+          {subStatsCount < maxSubStats && <Box
+            bg="gray.600"
+            className={styles.artifactEditorButton}
+            onClick={addSubStatRow}
+          >
+            <FaPlus className={styles.icon}/>
+          </Box>}
         </div>
       </div>
-    </div>
-
+    </ArtifactEditorContext>
   );
 };
 

@@ -8,8 +8,8 @@ import Characters from "./Pages/Characters/Characters";
 import "./App.scss";
 import {RecoilRoot} from "recoil";
 import CharacterEditor from "./Pages/CharacterEditor/CharacterEditor";
-import {isNode} from "genshin-calculator/dist/Helpers/Envirement";
 import Artifacts from "./Pages/Artifacts/Artifacts";
+import RecoilNexus from "recoil-nexus";
 
 const config = {
   initialColorMode: 'dark',
@@ -21,6 +21,7 @@ const theme = extendTheme({ config });
 const App = () => {
   return (
     <RecoilRoot>
+      <RecoilNexus />
       <BrowserRouter basename={!process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? "" : "/genshin-calc-front"}>
         <IconContext.Provider value={{ color: "white"}}>
           <ChakraProvider theme={theme}>

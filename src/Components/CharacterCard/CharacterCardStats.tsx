@@ -30,22 +30,12 @@ const CharacterCardStats: FC<IProps> = (props) => {
   }
 
   const HP = findStatByName("Hp")!;
-
-  // const [HP, setHP] = useState<number>(coreCharacter.calculatorStats.HP.calc());
-  // const [atk, setAtk] = useState<number>(coreCharacter.calculatorStats.ATK.calc());
-  // const [def, setDef] = useState<number>(coreCharacter.calculatorStats.DEF.calc());
-  // const [elementalMastery, setElementalMastery] = useState<number>(coreCharacter.calculatorStats.elementalMastery.calc());
-  // const [energyRecharge, setEnergyRecharge] = useState<number>(coreCharacter.calculatorStats.energyRecharge.calc());
-  // const [critRate, setCritRate] = useState<number>(coreCharacter.calculatorStats.critChance.calc());
-  // const [critDamage, setCritDamage] = useState<number>(coreCharacter.calculatorStats.critDamage.calc());
-  //
-  // coreCharacter.calculatorStats.HP.onChange.subscribe(setHP);
-  // coreCharacter.calculatorStats.ATK.onChange.subscribe(setAtk);
-  // coreCharacter.calculatorStats.DEF.onChange.subscribe(setDef);
-  // coreCharacter.calculatorStats.elementalMastery.onChange.subscribe(setElementalMastery);
-  // coreCharacter.calculatorStats.energyRecharge.onChange.subscribe(setEnergyRecharge);
-  // coreCharacter.calculatorStats.critChance.onChange.subscribe(setCritRate);
-  // coreCharacter.calculatorStats.critDamage.onChange.subscribe(setCritDamage);
+  const atk = findStatByName("AtkStat")!;
+  const def = findStatByName("Def")!;
+  const elementalMastery = findStatByName("ElementaryMastery")!;
+  const critRate = findStatByName("CritChance")!;
+  const critDamage = findStatByName("CritDamage")!;
+  const energyRecharge = findStatByName("EnergyRecharge")!;
 
   const icons = new VisionIconsList();
   const iconItem = icons.find(character.visionType!!);
@@ -57,41 +47,41 @@ const CharacterCardStats: FC<IProps> = (props) => {
         title={'HP'}
         value={HP.toFixed(0)}
       />
-      {/*<CharacterStat*/}
-      {/*  icon={<ATKIcon/>}*/}
-      {/*  title={'Сила атаки'}*/}
-      {/*  value={atk.toFixed(0)}*/}
-      {/*/>*/}
-      {/*<CharacterStat*/}
-      {/*  icon={<DefIcon/>}*/}
-      {/*  title={'Защита'}*/}
-      {/*  value={def.toFixed(0)}*/}
-      {/*/>*/}
-      {/*<CharacterStat*/}
-      {/*  icon={<EMIcon/>}*/}
-      {/*  title={'Мастерство стихий'}*/}
-      {/*  value={elementalMastery.toFixed(0)}*/}
-      {/*/>*/}
-      {/*<CharacterStat*/}
-      {/*  icon={<EnergyRechargeIcon/>}*/}
-      {/*  title={'Восст. Энергии'}*/}
-      {/*  value={`${energyRecharge.toFixed(2)}%`}*/}
-      {/*/>*/}
-      {/*<CharacterStat*/}
-      {/*  icon={<CritRateIcon/>}*/}
-      {/*  title={'Шанс крит. попадания'}*/}
-      {/*  value={`${critRate.toFixed(2)}%`}*/}
-      {/*/>*/}
-      {/*<CharacterStat*/}
-      {/*  icon={<CritDMGIcon/>}*/}
-      {/*  title={'Крит. урон'}*/}
-      {/*  value={`${critDamage.toFixed(2)}%`}*/}
-      {/*/>*/}
-      {/*<CharacterStat*/}
-      {/*  icon={iconItem.icon}*/}
-      {/*  title={`Бонус ${iconItem.displayName.toLowerCase()} урона`}*/}
-      {/*  value={'10.00%'}*/}
-      {/*/>*/}
+      <CharacterStat
+        icon={<ATKIcon/>}
+        title={'Сила атаки'}
+        value={atk.toFixed(0)}
+      />
+      <CharacterStat
+        icon={<DefIcon/>}
+        title={'Защита'}
+        value={def.toFixed(0)}
+      />
+      <CharacterStat
+        icon={<EMIcon/>}
+        title={'Мастерство стихий'}
+        value={elementalMastery.toFixed(0)}
+      />
+      <CharacterStat
+        icon={<EnergyRechargeIcon/>}
+        title={'Восст. Энергии'}
+        value={`${energyRecharge.toFixed(2)}%`}
+      />
+      <CharacterStat
+        icon={<CritRateIcon/>}
+        title={'Шанс крит. попадания'}
+        value={`${critRate.toFixed(2)}%`}
+      />
+      <CharacterStat
+        icon={<CritDMGIcon/>}
+        title={'Крит. урон'}
+        value={`${critDamage.toFixed(2)}%`}
+      />
+      <CharacterStat
+        icon={iconItem.icon}
+        title={`Бонус ${iconItem.displayName.toLowerCase()} урона`}
+        value={'10.00%'}
+      />
     </div>
   );
 };
