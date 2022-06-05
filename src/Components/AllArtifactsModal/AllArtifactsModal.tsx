@@ -9,6 +9,7 @@ import {
   VStack
 } from "@chakra-ui/react";
 import ArtifactEditor from "./ArtifactEditor/ArtifactEditor";
+import styles from './AllArtifactsModal.module.scss';
 
 interface IProps {
   // allList: IBaseCharacter[];
@@ -45,14 +46,13 @@ const AllArtifactsModal: FC<IProps> = ({
   //   ));
   // }
   return (
-    isOpen ? <Modal size="lg" isOpen={isOpen} onClose={onClose}>
-      {/*lg*/}
+    isOpen ? <Modal size="md" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay/>
-      <ModalContent bg="gray.600">
+      <ModalContent bg="gray.700" className={styles.artifactModal}>
         <ModalHeader>Редактор артефактов</ModalHeader>
         <ModalCloseButton/>
         <ModalBody>
-          <VStack>
+          <VStack className={styles.artifactsModalContainer}>
             <ArtifactEditor />
           </VStack>
         </ModalBody>
