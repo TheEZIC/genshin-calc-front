@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import styles from "../../AllArtifactsModal.module.scss";
 import {Image} from "@chakra-ui/react";
+import {ArtifactType} from "./ArtifactTypeEnum";
 
 interface IProps {
   icon: ArtifactType;
@@ -15,7 +16,7 @@ const ArtifactEditorAccordionType:FC<IProps> = (props) => {
         src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/${props.icon}.png`}
         objectFit='cover'
       />
-      <span>Цветок жизни</span>
+      <span>{props.name}</span>
     </div>
   );
 };

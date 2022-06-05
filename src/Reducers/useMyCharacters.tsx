@@ -1,4 +1,5 @@
 import {useRecoilState} from "recoil";
+import {getRecoil, setRecoil} from "recoil-nexus";
 import {myCharactersAtom} from "../Atoms/MyCharactersAtom";
 import {IBaseCharacter} from "../CharacterTypes/IBaseCharacter";
 import {useRoster} from "./useRoster";
@@ -45,25 +46,22 @@ export function useMyCharacters() {
       }
 
       coreStat.onChange.subscribe((value) => {
-        setMyCharacters((current) => {
-          const myCharacter = myCharacters.find(c => c.name === baseCharacter.name);
+        const myCharactersRecoil = getRecoil(myCharactersAtom);
+        const myCharacter = myCharactersRecoil.find(c => c.name === baseCharacter.name);
 
-          console.log(myCharacter, myCharacters, "statChange");
+        if (!myCharacter) return;
 
-          if (!myCharacter) return current;
-
-          current = current.filter(c => c.name !== myCharacter.name);
-          myCharacter.stats = myCharacter.stats.filter(s => s.name !== stat.name);
-          myCharacter.stats.push({
-            name: stat.name,
-            value,
-          });
-
-          return [
-            ...current,
-            myCharacter,
-          ];
+        const current = myCharacters.filter(c => c.name !== myCharacter.name);
+        myCharacter.stats = myCharacter.stats.filter(s => s.name !== stat.name);
+        myCharacter.stats.push({
+          name: stat.name,
+          value,
         });
+
+        setRecoil(myCharactersAtom, [
+          ...current,
+          myCharacter,
+        ]);
       });
     }
   }

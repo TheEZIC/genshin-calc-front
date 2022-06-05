@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './../AllArtifactsModal.module.scss';
 import ArtifactEditorLvl from "./ArtifactEditorComponents/ArtifactEditorLvl";
 import ArtifactEditorStatRow from "./ArtifactEditorComponents/ArtifactEditorStatRow";
@@ -10,6 +10,32 @@ import AccordionType from "./ArtifactEditorComponents/Accordions/AccordionType";
 import { ArtifactEditorContext } from './ArtifactEditorComponents/ArtifactEditorContext';
 
 const ArtifactEditor = () => {
+  const [maxSubStats, setMaxSubStats] = useState<number>(3);
+  const [subStatsCount, setSubStatsCount] = useState<number>(0);
+
+  useEffect(() => {
+    if (subStatsCount > maxSubStats) {
+      setSubStatsCount(maxSubStats);
+    }
+  }, [maxSubStats]);
+  
+  function renderSubStats() {
+    return new Array(subStatsCount)
+      .fill(1, 0, subStatsCount)
+      .map((value, i) => {
+        return (
+          <ArtifactEditorStatRow key={`substat-row-${i}`} />
+        )
+      });
+  }
+
+  function addSubStatRow() {
+    console.log("addSubStatRow", subStatsCount < maxSubStats, subStatsCount)
+    if (subStatsCount < maxSubStats) {
+      setSubStatsCount((current) => current + 1);
+    }
+  }
+
   return (
     <ArtifactEditorContext value={{
       subStatsCount,
