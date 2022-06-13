@@ -14,9 +14,9 @@ const Header = () => {
         <Link to="/characters">
           <Button className={styles.navItem}>Персонажи</Button>
         </Link>
-        <Link to="/artifacts">
-          <Button className={styles.navItem}>Артефакты</Button>
-        </Link>
+        {/*<Link to="/artifacts">*/}
+        {/*  <Button className={styles.navItem}>Артефакты</Button>*/}
+        {/*</Link>*/}
       </Flex>
     </Box>
   );

@@ -3,6 +3,7 @@ import {Box, Image} from "@chakra-ui/react";
 import styles from "./ArtifactCard.module.scss";
 import {FaPencilAlt, FaTrashAlt} from "react-icons/all";
 import ArtifactStat from "./ArtifactStat";
+import {assetsUrl} from "../../App";
 
 const ArtifactCard = () => {
   return (
@@ -17,7 +18,7 @@ const ArtifactCard = () => {
         />
         <FaPencilAlt className={styles.icon}/>
       </Box>
-      <Image className={styles.artifactImage} objectFit='cover' src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Adventurer/Flower.png`}/>
+      <Image className={styles.artifactImage} objectFit='cover' src={`${assetsUrl}/Assets/Artifacts/Adventurer/Flower.png`}/>
       <Box
         className={styles.artifactStat}
         bg="gray.700"

@@ -4,6 +4,7 @@ import styles from "./CharacterEditor.module.scss";
 import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 import CalcStores from "../../CalcStores/CalcStores";
 import {SkillType} from "genshin-calculator/dist/Skills/SkillType";
+import {assetsUrl} from "../../App";
 
 interface IProps {
   baseCharacter: IBaseCharacter;
@@ -20,7 +21,7 @@ const CharacterEditorTalents: FC<IProps> = (props) => {
     <Box className={styles.characterEditContainer}>
       {attackTalent && (
         <Box className={styles.characterEditableContainerTalents} bg="gray.700">
-          <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/skills/NormalAttack.png`}/>
+          <Image className={styles.characterTalentsImage} src={`${assetsUrl}/Assets/Characters/${props.baseCharacter.fullName}/skills/NormalAttack.png`}/>
           <div className={styles.characterTalentsInfo}>
             <Box className={styles.characterTalentsName} as="span">{attackTalent!.skillName}</Box>
             <Box className={styles.characterTalentsType} as="span">Normal/Charged Attack</Box>
@@ -37,7 +38,7 @@ const CharacterEditorTalents: FC<IProps> = (props) => {
 
       {elementalTalent && (
         <Box className={styles.characterEditableContainerTalents} bg="gray.700">
-          <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/skills/ElementalSkill.png`}/>
+          <Image className={styles.characterTalentsImage} src={`${assetsUrl}/Assets/Characters/${props.baseCharacter.fullName}/skills/ElementalSkill.png`}/>
           <div className={styles.characterTalentsInfo}>
             <Box className={styles.characterTalentsName} as="span">{elementalTalent!.skillName}</Box>
             <Box className={styles.characterTalentsType} as="span">Elemental Skill</Box>
@@ -54,7 +55,7 @@ const CharacterEditorTalents: FC<IProps> = (props) => {
 
       {burstTalent && (
         <Box className={styles.characterEditableContainerTalents} bg="gray.700">
-          <Image className={styles.characterTalentsImage} src={`${process.env.PUBLIC_URL}/Assets/Characters/${props.baseCharacter.fullName}/skills/ElementalBurst.png`}/>
+          <Image className={styles.characterTalentsImage} src={`${assetsUrl}/Assets/Characters/${props.baseCharacter.fullName}/skills/ElementalBurst.png`}/>
           <div className={styles.characterTalentsInfo}>
             <Box className={styles.characterTalentsName} as="span">{burstTalent!.skillName}</Box>
             <Box className={styles.characterTalentsType} as="span">Elemental Burst</Box>

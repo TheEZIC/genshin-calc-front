@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {Image} from "@chakra-ui/react";
 import styles from '../../AllArtifactsModal.module.scss';
 import {ArtifactType} from "./ArtifactTypeEnum";
+import {assetsUrl} from "../../../../App";
 
 interface IProps {
   icon: string;
@@ -13,7 +14,7 @@ const ArtifactSet:FC<IProps> = (props) => {
     <div className={styles.artifactSetContainer}>
       <Image
         className={styles.artifactSetImage}
-        src={`${process.env.PUBLIC_URL}/Assets/Artifacts/${props.icon}/Flower.png`}
+        src={`${assetsUrl}/Assets/Artifacts/${props.icon}/Flower.png`}
         objectFit='cover'
       />
       <span>{props.name}</span>

@@ -5,6 +5,7 @@ import classNames from "classnames";
 import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 import Character from "genshin-calculator/dist/Entities/Characters/Character";
 import {useMyCharacters} from "../../Reducers/useMyCharacters";
+import {assetsUrl} from "../../App";
 
 interface IProps {
   baseCharacter: IBaseCharacter;
@@ -54,7 +55,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       <Box className={styles.characterEditableContainer} bg="gray.700">
         <Image
           className={styles.characterEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Characters/${baseCharacter.fullName}/Constellation.png`}
+          src={`${assetsUrl}/Assets/Characters/${baseCharacter.fullName}/Constellation.png`}
         />
         <Box className={styles.characterEditableSpanContainer} bg="gray.600">
           <span className={styles.characterEditableName}>Ур.</span>
@@ -83,7 +84,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       >
         <Image
           className={styles.characterEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Weapons/Swords/SkywardBlade.png`}
+          src={`${assetsUrl}/Assets/Weapons/Swords/SkywardBlade.png`}
         />
         <Box className={styles.characterEditableSpanContainer} bg="gray.600">
           <span className={styles.characterEditableName}>Ур.</span>
@@ -107,7 +108,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       >
         <Image
           className={styles.characterArtifactEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/Flower.png`}
+          src={`${assetsUrl}/Assets/Artifacts/Empty/Flower.png`}
         />
       </Box>
       <Box
@@ -116,7 +117,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       >
         <Image
           className={styles.characterArtifactEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/Plume.png`}
+          src={`${assetsUrl}/Assets/Artifacts/Empty/Plume.png`}
         />
       </Box>
       <Box
@@ -125,7 +126,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       >
         <Image
           className={styles.characterArtifactEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/Sands.png`}
+          src={`${assetsUrl}/Assets/Artifacts/Empty/Sands.png`}
         />
       </Box>
       <Box
@@ -134,7 +135,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       >
         <Image
           className={styles.characterArtifactEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/Goblet.png`}
+          src={`${assetsUrl}/Assets/Artifacts/Empty/Goblet.png`}
         />
       </Box>
       <Box
@@ -143,7 +144,7 @@ const CharacterEditorInfo: FC<IProps> = (props) => {
       >
         <Image
           className={styles.characterArtifactEditImage}
-          src={`${process.env.PUBLIC_URL}/Assets/Artifacts/Empty/Circlet.png`}
+          src={`${assetsUrl}/Assets/Artifacts/Empty/Circlet.png`}
         />
       </Box>
     </Box>

@@ -34,7 +34,7 @@ const App = () => {
                   <Route index element={<Calculator/>}/>
                   <Route path="/characters" element={<Characters/>}/>
                   <Route path="/characters/:characterName" element={<CharacterEditor/>}/>
-                  <Route path="/artifacts" element={<Artifacts/>}/>
+                  {/*<Route path="/artifacts" element={<Artifacts/>}/>*/}
                 </Routes>
               </div>
             </div>
