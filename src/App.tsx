@@ -19,6 +19,7 @@ const config = {
 }
 
 const theme = extendTheme({ config });
+const assetsUrl = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? process.env.PUBLIC_URL : "../" + process.env.PUBLIC_URL;
 
 const App = () => {
   return (
@@ -44,5 +45,7 @@ const App = () => {
     </RecoilRoot>
   );
 }
+
+export {assetsUrl};
 
 export default App;
