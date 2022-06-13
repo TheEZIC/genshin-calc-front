@@ -8,16 +8,18 @@ const CalculatorStatGroup = () => {
   const {calcResult} = useCalcResult();
 
   return (
-    <Box
-      className={styles.calculatorStat}
-    >
-      {calcResult && (
-        <>
-          <StatItem text="Урон" value={`${calcResult.damage.toFixed(0)}`}/>
-          <StatItem text="Фреймы" value={`${calcResult.frames}`}/>
-        </>
-      )}
-    </Box>
+    rotationSkills.length ? (
+      <Box
+        className={styles.calculatorStat}
+      >
+        {calcResult && (
+          <>
+            <StatItem text="Урон" value={`${calcResult.damage.toFixed(0)}`}/>
+            <StatItem text="Секунды" value={`${(calcResult.frames/60).toFixed(2)}`}/>
+          </>
+        )}
+      </Box>
+    ) : <></>
   );
 };
 

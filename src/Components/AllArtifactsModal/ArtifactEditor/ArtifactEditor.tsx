@@ -3,7 +3,7 @@ import styles from './../AllArtifactsModal.module.scss';
 import ArtifactEditorLvl from "./ArtifactEditorComponents/ArtifactEditorLvl";
 import ArtifactEditorStatRow from "./ArtifactEditorComponents/ArtifactEditorStatRow";
 import {Box} from "@chakra-ui/react";
-import {FaPencilAlt, FaPlus, FaTrashAlt} from "react-icons/all";
+import {FaPlus} from "react-icons/all";
 import AccordionSet from "./ArtifactEditorComponents/Accordions/AccordionSet";
 import AccordionRarity from "./ArtifactEditorComponents/Accordions/AccordionRarity";
 import AccordionType from "./ArtifactEditorComponents/Accordions/AccordionType";

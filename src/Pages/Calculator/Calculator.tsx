@@ -14,10 +14,6 @@ const Calculator: FC = () => {
         Отряд
       </div>
       <CalculatorCharactersList/>
-      <Box className={styles.rosterContainer}>
-        <SkillTree/>
-        <RotationList/>
-      </Box>
       <Box className={styles.calcButtonContainer}>
         <CalculateButton/>
       </Box>
@@ -26,6 +22,10 @@ const Calculator: FC = () => {
         className={styles.calcStatContainer}
       >
         <CalculatorStatGroup/>
+      </Box>
+      <Box className={styles.rosterContainer}>
+        <SkillTree/>
+        <RotationList/>
       </Box>
     </Container>
   );

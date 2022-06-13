@@ -39,12 +39,12 @@ const CalculatorCharactersList = () => {
     <div className={styles.characters}>
       {renderCharacters()}
       {myCharacters.length !== 4 && <EmptyCard
-        title="Добавить нового персонажа"
+        title="Добавить персонажа в отряд"
         style={{width: "330px"}}
         onClick={openModal}
       />}
       <AllCharactersModal
-        emptyText="Создайте персонажа"
+        emptyText='Ваш список персонажей пуст'
         allList={myCharacters}
         localList={roster}
         isOpen={isOpen}

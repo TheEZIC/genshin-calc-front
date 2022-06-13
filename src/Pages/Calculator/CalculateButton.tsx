@@ -25,7 +25,6 @@ const CalculateButton = () => {
         leftIcon={<FaCalculator/>}
         bg="gray.700"
         size='sm'
-        className={styles.CalcButton}
         onClick={computeRotation}
       >
         Рассчитать
