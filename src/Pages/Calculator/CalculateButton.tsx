@@ -6,16 +6,25 @@ import styles from "./Calculator.module.scss";
 import {useCalc} from "../../Reducers/useCalc";
 import useCalcResult from "../../Reducers/useCalcResult";
 import {useRoster} from "../../Reducers/useRoster";
+import Skill from "genshin-calculator/dist/Skills/Skill";
 
 const CalculateButton = () => {
   const {rotationSkills} = useRotationSkills();
   const {setCalcResult} = useCalcResult();
-  const {roster} = useRoster();
   const calc = useCalc();
 
   function computeRotation() {
-    const result = calc.damageCalculator.calcRotation(rotationSkills);
-    console.log(calc);
+    const skills: Skill[] = []
+
+    for (let rotationSkill of rotationSkills) {
+      const coreSkill = calc.skills.list.find(s => s.item.title === rotationSkill.title);
+
+      if (coreSkill) {
+        skills.push(coreSkill.item);
+      }
+    }
+
+    const result = calc.damageCalculator.calcRotation(skills);
     setCalcResult(result);
   }
 

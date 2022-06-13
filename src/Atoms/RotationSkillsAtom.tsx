@@ -1,8 +1,9 @@
 import {atom} from "recoil";
-import Skill from "genshin-calculator/dist/Skills/Skill";
+import {IRotationSkill} from "../SkillTypes/IRotationSkill";
+import {Db} from "../Database/Database";
 
-export const rotationSkillsAtom = atom<Skill[]>({
+export const rotationSkillsAtom = atom<IRotationSkill[]>({
   key: 'RotationSkillsAtom',
   dangerouslyAllowMutability: true,
-  default: [],
+  default: Db.rotationSkills.getDefaults(),
 });

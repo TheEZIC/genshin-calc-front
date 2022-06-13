@@ -4,6 +4,7 @@ import styles from "./CharacterCard.module.scss";
 import ElementIcon from "../ElementIcon/ElementIcon";
 import {useCharacterCardContext} from "./CharacterCardContext";
 import classNames from "classnames";
+import {useMyCharacters} from "../../Reducers/useMyCharacters";
 
 interface IProps {
   icons?: React.ReactNode;
@@ -11,6 +12,8 @@ interface IProps {
 
 const CharacterCardHeader: FC<IProps> = (props) => {
   const character = useCharacterCardContext();
+  const {findMyCharacterByName} = useMyCharacters();
+  const myCharacter = findMyCharacterByName(character.name)!;
 
   return (
     <div className={classNames(styles.characterContainer, `star${character.rarity}`)}>
@@ -36,7 +39,7 @@ const CharacterCardHeader: FC<IProps> = (props) => {
         </div>
         <div className={styles.lvlConstellations}>
           <Box as='span'>
-            Ур. 80/90
+            Ур. {myCharacter.lvl}/90
             {/*{character.lvl}*/}
           </Box>
           <Box as='span' className={styles.constellations} style={{backgroundColor:"rgba(30, 120, 200,0.9)"}}>

@@ -16,6 +16,8 @@ const CharactersList = () => {
 
   const {myCharacters, addMyCharacter, removeMyCharacter} = useMyCharacters();
 
+  console.log(myCharacters, CalcStores.myCharacters.list, "myCharacters");
+
   function renderCharacters() {
     return myCharacters.map(c => {
       const coreCharacter = CalcStores.myCharacters.getByName(c.name)!;

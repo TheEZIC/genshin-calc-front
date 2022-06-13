@@ -25,11 +25,15 @@ const CharacterEditor: FC<IProps> = (props) => {
   useEffect(() => {
     const _baseCharacter = myCharacters.find(c => c.name === characterName);
 
+    console.log(_baseCharacter, "base char in editor")
+
     if (!_baseCharacter) {
       return navigate("/characters");
     }
 
     const _coreCharacter = CalcStores.myCharacters.getByName(_baseCharacter.name);
+
+    console.log(_coreCharacter, "core char in editor")
 
     if (!_coreCharacter) {
       return navigate("/characters");

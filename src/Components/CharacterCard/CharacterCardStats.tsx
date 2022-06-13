@@ -22,8 +22,11 @@ interface IProps {
 const CharacterCardStats: FC<IProps> = (props) => {
   const character = useCharacterCardContext();
   const {findMyCharacterByName} = useMyCharacters();
-  const myCharacter = findMyCharacterByName(character.name)!;
-  const {coreCharacter} = props;
+  const myCharacter = findMyCharacterByName(character.name);
+
+  if (!myCharacter) {
+    return <></>;
+  }
 
   const findStatByName = (name: string) => {
     return myCharacter.stats.find(s => s.name === name)?.value;

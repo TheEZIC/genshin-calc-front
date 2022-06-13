@@ -3,13 +3,13 @@ import {Box, Button, VStack} from "@chakra-ui/react";
 import styles from "./RotationList.module.scss";
 import useRotationSkills from "../../../Reducers/useRotationSkills";
 import {FaFileExcel} from "react-icons/all";
+import RotationListItem from "./RotationListItem";
 
 const RotationList = () => {
   const {rotationSkills, clearRotationSkills} = useRotationSkills();
-  console.log(Boolean(rotationSkills.length), "test")
 
   function renderRotationSkills() {
-    return rotationSkills.map(s => <span>{s.title}</span>);
+    return rotationSkills.map((s, i) => <RotationListItem key={`RotationSkill${i}`} rotationSkill={s}/>);
   }
 
   return (

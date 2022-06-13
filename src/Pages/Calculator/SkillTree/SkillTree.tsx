@@ -7,9 +7,9 @@ import {useCalc} from "../../../Reducers/useCalc";
 import {ISkillsItem} from "genshin-calculator/dist/Roster/Roster";
 
 const SkillTree = () => {
-  const [skills, setSkills] = useState<ISkillsItem[]>([]);
-  const {roster} = useRoster();
   const calc = useCalc();
+  const {roster} = useRoster();
+  const [skills, setSkills] = useState<ISkillsItem[]>(calc.roster.charactersSkills);
 
   useEffect(() => {
     const rosterSkills = calc.roster.charactersSkills;

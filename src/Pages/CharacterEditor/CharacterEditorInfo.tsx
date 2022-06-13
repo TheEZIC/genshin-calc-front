@@ -4,6 +4,7 @@ import styles from "./CharacterEditor.module.scss";
 import classNames from "classnames";
 import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 import Character from "genshin-calculator/dist/Entities/Characters/Character";
+import {useMyCharacters} from "../../Reducers/useMyCharacters";
 
 interface IProps {
   baseCharacter: IBaseCharacter;
@@ -13,11 +14,14 @@ interface IProps {
 const CharacterEditorInfo: FC<IProps> = (props) => {
   const {baseCharacter, coreCharacter} = props;
 
+  const {findMyCharacterByName, changeMyCharacterLvl} = useMyCharacters();
+  const myCharacter = findMyCharacterByName(baseCharacter.name)!;
+
   const [characterLvl, setCharacterLvl] = useState<any>(coreCharacter.lvl);
-  const [editCharacter, setEditCharacter] = useState<boolean>(false);
 
   const changeLvl = (lvl: number) => {
     setCharacterLvl(lvl);
+    changeMyCharacterLvl(myCharacter, lvl);
     coreCharacter.applyLvl(lvl);
     console.log(coreCharacter);
   }

@@ -7,6 +7,7 @@ import {useRoster} from "../../Reducers/useRoster";
 import styles from "../Characters/Characters.module.scss";
 import {useCalc} from "../../Reducers/useCalc";
 import {FaTrashAlt} from "react-icons/all";
+import CalcStores from "../../CalcStores/CalcStores";
 
 const CalculatorCharactersList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const CalculatorCharactersList = () => {
   const calc = useCalc();
 
   useEffect(() => {
-    console.log(calc.roster.characters, "core characters");
+    console.log(calc.roster.characters, CalcStores.myCharacters);
   }, [roster])
 
   function renderCharacters() {

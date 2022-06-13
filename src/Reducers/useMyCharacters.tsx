@@ -1,12 +1,19 @@
 import {useRecoilState} from "recoil";
-import {getRecoil, setRecoil} from "recoil-nexus";
 import {myCharactersAtom} from "../Atoms/MyCharactersAtom";
 import {IBaseCharacter} from "../CharacterTypes/IBaseCharacter";
 import {useRoster} from "./useRoster";
 import CalcStores from "../CalcStores/CalcStores";
-import {IMyCharacterStat} from "../CharacterTypes/IMyCharacter";
+import {IMyCharacter} from "../CharacterTypes/IMyCharacter";
+import {BaseCharacterAdapter} from "../Adapters/BaseCharacterAdapter";
+import MyCharacterAdapter from "../Adapters/MyCharacterAdapter";
+import {Db} from "../Database/Database";
+import CalculatorSingleton from "../CalculatorSingleton";
+import {calc} from "@chakra-ui/react";
 
 export function useMyCharacters() {
+  const baseCharacterAdapter = new BaseCharacterAdapter();
+  const myCharacterAdapter = new MyCharacterAdapter();
+
   const [myCharacters, setMyCharacters] = useRecoilState(myCharactersAtom);
   const {removeCharacter} = useRoster();
 
@@ -15,69 +22,59 @@ export function useMyCharacters() {
   }
 
   function addMyCharacter(baseCharacter: IBaseCharacter) {
-    const character = new baseCharacter.creator();
-    const stats: IMyCharacterStat[] = [];
-
-    for (let coreStat of character.calculatorStats.list) {
-      let stat = {
-        name: coreStat.title,
-        value: coreStat.calc(),
-      }
-
-      stats.push(stat);
-    }
+    const character = baseCharacterAdapter.toCore(baseCharacter);
+    const myCharacter = myCharacterAdapter.toFrontend(character);
 
     CalcStores.myCharacters.add(character);
+    Db.myCharacters.add(myCharacter);
 
     setMyCharacters((current) => [
       ...current,
-      {
-        ...baseCharacter,
-        lvl: 1,
-        talents: [],
-        stats,
-      }
+      myCharacter
     ]);
-
-    for (let coreStat of character.calculatorStats.list) {
-      let stat = {
-        name: coreStat.title,
-        value: coreStat.calc(),
-      }
-
-      coreStat.onChange.subscribe((value) => {
-        const myCharactersRecoil = getRecoil(myCharactersAtom);
-        const myCharacter = myCharactersRecoil.find(c => c.name === baseCharacter.name);
-
-        if (!myCharacter) return;
-
-        const current = myCharacters.filter(c => c.name !== myCharacter.name);
-        myCharacter.stats = myCharacter.stats.filter(s => s.name !== stat.name);
-        myCharacter.stats.push({
-          name: stat.name,
-          value,
-        });
-
-        setRecoil(myCharactersAtom, [
-          ...current,
-          myCharacter,
-        ]);
-      });
-    }
   }
 
   function removeMyCharacter(baseCharacter: IBaseCharacter) {
-    const character = new baseCharacter.creator();
+    const character = baseCharacterAdapter.toCore(baseCharacter);
+    const myCharacter = myCharacters.find(c => c.name === baseCharacter.name);
+
+    if (!myCharacter) return;
 
     CalcStores.myCharacters.remove(character);
-    removeCharacter(baseCharacter);
+    Db.myCharacters.remove(myCharacter);
+    removeCharacter(myCharacter);
+
     setMyCharacters((current) => current.filter(c => {
       return c.name !== baseCharacter.name
     }));
   }
 
+  function changeMyCharacterLvl(myCharacter: IMyCharacter, lvl: number) {
+    const character = findMyCharacterByName(myCharacter.name);
+
+    if (!character) return;
+
+    Db.myCharacters.changeLvl(myCharacter, lvl);
+    const calcCharacter = CalculatorSingleton.instance.roster.characters.find(c => c.title === myCharacter.name);
+
+    if (calcCharacter) {
+      calcCharacter.baseStats.applyLvl(lvl);
+    }
+
+    setMyCharacters((current) => {
+      current = current.filter(c => c.name !== myCharacter.name);
+      character.lvl = lvl;
+
+      return [
+        ...current,
+        character,
+      ];
+    });
+  }
+
   return {
     myCharacters,
+    changeMyCharacterLvl,
     findMyCharacterByName,
     addMyCharacter,
     removeMyCharacter,

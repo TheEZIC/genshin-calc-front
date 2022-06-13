@@ -1,6 +1,5 @@
 import {GenshinCalculator} from "genshin-calculator";
 import Enemy from "genshin-calculator/dist/Entities/Enemies/Enemy";
-//import Enemy from "genshin-calculator/dist/Entities/Enemies/Enemy";
 
 export default class CalculatorSingleton {
   private static _instance: GenshinCalculator;

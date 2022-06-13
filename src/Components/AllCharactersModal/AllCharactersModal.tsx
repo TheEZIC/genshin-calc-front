@@ -16,7 +16,7 @@ interface IProps {
   allList: IBaseCharacter[];
   localList: IBaseCharacter[];
   isOpen: boolean;
-  onItemClick: (character: IBaseCharacter) => void;
+  onItemClick: (character: any) => void;
   onClose: () => void;
 }
 

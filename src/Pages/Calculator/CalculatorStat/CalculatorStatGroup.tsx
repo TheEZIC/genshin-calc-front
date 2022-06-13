@@ -3,9 +3,11 @@ import {Box, StatGroup} from "@chakra-ui/react";
 import styles from "./CalculatorStat.module.scss";
 import StatItem from "./StatItem";
 import useCalcResult from "../../../Reducers/useCalcResult";
+import useRotationSkills from "../../../Reducers/useRotationSkills";
 
 const CalculatorStatGroup = () => {
   const {calcResult} = useCalcResult();
+  const {rotationSkills} = useRotationSkills();
 
   return (
     rotationSkills.length ? (
