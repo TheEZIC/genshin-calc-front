@@ -4,7 +4,6 @@ import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 import styles from "./CharacterRow.module.scss";
 import ElementIcon from "../ElementIcon/ElementIcon";
 import classNames from "classnames";
-import {assetsUrl} from "../../App";
 
 interface IProps extends BoxProps {
   character: IBaseCharacter;
@@ -26,7 +25,7 @@ const CharacterRow: FC<IProps> = (props) => {
       onClick={handleClick}
       style={{
         backgroundImage:` 
-          url('${assetsUrl}/Assets/Characters/${character.fullName}/NamecardBanner.png')
+          url('${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/NamecardBanner.png')
           `,
       }}
     >
@@ -34,7 +33,7 @@ const CharacterRow: FC<IProps> = (props) => {
         <Image
           className={styles.itemImage}
           objectFit='cover'
-          src={`${assetsUrl}/Assets/Characters/${character.fullName}/Icon.png`}
+          src={`${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Icon.png`}
         />
         <span className={styles.itemTitle}>{character.displayName}</span>
       </div>

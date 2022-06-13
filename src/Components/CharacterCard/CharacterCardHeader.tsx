@@ -5,7 +5,6 @@ import ElementIcon from "../ElementIcon/ElementIcon";
 import {useCharacterCardContext} from "./CharacterCardContext";
 import classNames from "classnames";
 import {useMyCharacters} from "../../Reducers/useMyCharacters";
-import {assetsUrl} from "../../App";
 
 interface IProps {
   icons?: React.ReactNode;
@@ -20,7 +19,7 @@ const CharacterCardHeader: FC<IProps> = (props) => {
     <div className={classNames(styles.characterContainer, `star${character.rarity}`)}>
       <div
         className={styles.characterNamecard}
-        style={{backgroundImage:`url('${assetsUrl}/Assets/Characters/${character.fullName}/Namecard.png')`}}
+        style={{backgroundImage:`url('${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Namecard.png')`}}
       />
       {props.icons && (
         <Box
@@ -30,7 +29,7 @@ const CharacterCardHeader: FC<IProps> = (props) => {
           {props.icons}
         </Box>
       )}
-      <Image className={styles.characterImage} objectFit='cover' src={`${assetsUrl}/Assets/Characters/${character.fullName}/Icon.png`}/>
+      <Image className={styles.characterImage} objectFit='cover' src={`${process.env.PUBLIC_URL}/Assets/Characters/${character.fullName}/Icon.png`}/>
       <div className={styles.characterInfo}>
         <div className={styles.characterNameElement}>
           <Box as='span' className={styles.characterName}>
