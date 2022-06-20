@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import {Container} from "@chakra-ui/react";
+import {Box, Container, Image} from "@chakra-ui/react";
 import styles from "./CharacterEditor.module.scss";
 import CharacterRow from "../../Components/CharacterRow/CharacterRow";
 import {useParams} from "react-router-dom";
@@ -11,6 +11,8 @@ import CharacterEditorStats from "./Stats/CharacterEditorStats";
 import {IBaseCharacter} from "../../CharacterTypes/IBaseCharacter";
 import Character from "genshin-calculator/dist/Entities/Characters/Character";
 import CalcStores from "../../CalcStores/CalcStores";
+import ElementIcon from "../../Components/ElementIcon/ElementIcon";
+import {assetsUrl} from "../../App";
 
 interface IProps {
 }
@@ -46,7 +48,26 @@ const CharacterEditor: FC<IProps> = (props) => {
   return baseCharacter ? (
     <Container maxW="1440px">
       <h2 className={styles.pageTitle}>Редактирование персонажей</h2>
-      <CharacterRow character={baseCharacter}/>
+      <Box
+        {...props}
+        className={styles.fix}
+        bg="gray.700"
+        style={{
+          backgroundImage:` 
+          url('${assetsUrl}/Assets/Characters/${baseCharacter.fullName}/NamecardBanner.png')
+          `,
+        }}
+      >
+        <div className={styles.itemInfo}>
+          <Image
+            className={styles.itemImage}
+            objectFit='cover'
+            src={`${assetsUrl}/Assets/Characters/${baseCharacter.fullName}/Icon.png`}
+          />
+          <span className={styles.itemTitle}>{baseCharacter.displayName}</span>
+        </div>
+        <ElementIcon visionType={baseCharacter.visionType}/>
+      </Box>
       <CharacterEditorInfo baseCharacter={baseCharacter} coreCharacter={coreCharacter!}/>
       <CharacterEditorTalents baseCharacter={baseCharacter}/>
       <CharacterEditorStats baseCharacter={baseCharacter}/>

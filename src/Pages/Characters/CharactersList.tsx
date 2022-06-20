@@ -9,7 +9,7 @@ import {charactersList} from "../../CharactersList/CharactersList";
 import {FaPencilAlt, FaTrashAlt} from "react-icons/all";
 import CalcStores from "../../CalcStores/CalcStores";
 
-const CharactersList = () => {
+const   CharactersList = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
